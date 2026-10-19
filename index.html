@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fieldwork Studios — Creatieve strategie voor D2C-merken</title>
+<meta name="description" content="Fieldwork Studios is een bureau voor creatieve strategie voor e-commerce- en D2C-merken. Eerst onderzoek, dan creatie. Vraag een gratis audit van je ads aan.">
+<meta name="theme-color" content="#F2F9FE">
+<meta property="og:title" content="Fieldwork Studios — Ads die blijven hangen. En verkopen.">
+<meta property="og:description" content="Creatieve strategie voor e-commerce- en D2C-merken. Vraag een gratis audit van je ads aan.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B2545'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%2377C9F7'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  /* =========================================================
+     Fieldwork Studios — design tokens
+     Verhouding: ~70% licht, ~20% blauw, ~8% navy, ~2% flare
+     ========================================================= */
+  :root {
+    --sky: #77C9F7;
+    --sky-hover: #62BFF5;
+    --sky-soft: #DDF0FD;
+    --sky-mist: #F2F9FE;
+    --navy: #0B2545;
+    --navy-2: #1A3A63;
+    --muted: #3A5272;      /* 8:1 op wit, 6.9:1 op sky-soft */
+    --line: #CFE6F6;
+    --line-strong: #8FA6C0;
+    --white: #FFFFFF;
+    --flare: #C2410C;      /* 5.2:1 op wit — één accent per scherm */
+    --error: #B42318;
+    --on-navy-muted: #C9D6E8;
+
+    --s1: 8px; --s2: 16px; --s3: 24px; --s4: 32px; --s5: 40px; --s6: 48px;
+    --s7: 56px; --s8: 64px; --s10: 80px; --s12: 96px; --s16: 128px; --s20: 160px;
+
+    --r-sm: 8px;
+    --r: 16px;
+    --r-lg: 24px;
+    --r-xl: 32px;
+    --max: 1240px;
+
+    --font-head: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    --ease: cubic-bezier(.2, .7, .2, 1);
+
+    --dots-navy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%230B2545' fill-opacity='.2'/%3E%3C/svg%3E");
+    --dots-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%23FFFFFF' fill-opacity='.55'/%3E%3C/svg%3E");
+    --dots-sky: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%2377C9F7' fill-opacity='.4'/%3E%3C/svg%3E");
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 104px; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0; background: var(--white); color: var(--navy);
+    font: 400 16px/1.6 var(--font-body);
+    -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  img, svg { display: block; max-width: 100%; }
+  h1, h2, h3, h4 { font-family: var(--font-head); font-weight: 600; letter-spacing: -0.02em; line-height: 1.08; margin: 0; color: var(--navy); }
+  p { margin: 0; }
+  a { color: var(--navy); }
+  ::selection { background: var(--sky); color: var(--navy); }
+  :focus-visible { outline: 3px solid var(--navy); outline-offset: 3px; border-radius: 6px; }
+  .on-navy :focus-visible { outline-color: var(--sky); }
+
+  .skip { position: absolute; left: 16px; top: -100px; z-index: 200; background: var(--navy); color: var(--white); padding: 8px 16px; border-radius: var(--r-sm); }
+  .skip:focus { top: 16px; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 var(--s2); }
+  @media (min-width: 768px) { .wrap { padding: 0 var(--s5); } }
+
+  section { padding: var(--s10) 0; }
+  @media (min-width: 960px) { section { padding: var(--s16) 0; } }
+
+  /* ---------- Typografie-hulpjes ---------- */
+  .label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font: 600 13px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase;
+    color: var(--navy); background: var(--sky-soft);
+    padding: 8px 14px; border-radius: 999px;
+  }
+  .label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--navy); }
+  .label.on-sky { background: var(--white); }
+
+  .h-xl { font-size: clamp(36px, 6.4vw, 64px); }
+  .lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); line-height: 1.55; }
+
+  .sec-head { display: grid; gap: var(--s3); margin-bottom: var(--s6); }
+  .sec-head h2 { margin-top: var(--s1); }
+  @media (min-width: 960px) {
+    .sec-head { grid-template-columns: 1.2fr .8fr; align-items: end; gap: var(--s8); margin-bottom: var(--s8); }
+    .sec-head .lead { padding-bottom: 8px; }
+  }
+
+  /* ---------- Knoppen ---------- */
+  .btn {
+    --pad: 14px 24px;
+    position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 52px; padding: var(--pad);
+    border-radius: 999px; border: 2px solid transparent;
+    font: 600 16px/1.2 var(--font-body); text-decoration: none; cursor: pointer; white-space: nowrap;
+    transition: background-color .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+  }
+  .btn:active { transform: translateY(1px); }
+  .btn .arrow { width: 18px; height: 18px; transition: transform .25s var(--ease); }
+  .btn:hover .arrow { transform: translateX(3px); }
+  .btn-primary { background: var(--sky); border-color: var(--sky); color: var(--navy); }
+  .btn-primary:hover { background: var(--sky-hover); border-color: var(--sky-hover); }
+  .btn-ghost { background: transparent; border-color: var(--navy); color: var(--navy); }
+  .btn-ghost:hover { background: var(--navy); color: var(--white); }
+  .btn-navy { background: var(--navy); border-color: var(--navy); color: var(--white); }
+  .btn-navy:hover { background: var(--navy-2); border-color: var(--navy-2); }
+  .btn-sm { min-height: 44px; --pad: 10px 18px; font-size: 15px; }
+
+  /* ---------- Woordmerk ---------- */
+  .wordmark {
+    display: inline-flex; align-items: center; gap: 10px;
+    font: 600 20px/1 var(--font-head); letter-spacing: -0.02em;
+    color: var(--navy); text-decoration: none; white-space: nowrap;
+  }
+  .wordmark .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--sky); flex: none; }
+  .on-navy .wordmark { color: var(--white); }
+
+  /* ---------- Header (zwevende pill) ---------- */
+  .site-header { position: fixed; inset: 12px 0 auto; z-index: 60; pointer-events: none; }
+  .bar {
+    pointer-events: auto;
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
+    height: 64px; padding: 0 8px 0 20px;
+    background: rgba(255,255,255,.92); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
+    border: 1px solid var(--line); border-radius: 999px;
+    transition: border-color .3s var(--ease), background-color .3s var(--ease);
+  }
+  .scrolled .bar { border-color: var(--line-strong); background: rgba(255,255,255,.97); }
+  .nav { display: none; }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
+  .nav a {
+    display: block; padding: 10px 14px; border-radius: 999px;
+    text-decoration: none; font-weight: 500; font-size: 15px; color: var(--navy);
+    transition: background-color .2s var(--ease);
+  }
+  .nav a:hover, .nav a.active { background: var(--sky-mist); }
+  .nav a.active { box-shadow: inset 0 0 0 1px var(--line); }
+  .bar-actions { display: flex; align-items: center; gap: 8px; }
+  .menu-toggle {
+    width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--line); background: var(--white);
+    color: var(--navy); display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .menu-toggle svg { width: 20px; height: 20px; }
+  .mobile-nav {
+    pointer-events: auto; margin-top: 8px; padding: var(--s2) var(--s3) var(--s3);
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
+  }
+  .mobile-nav[hidden] { display: none; }
+  .mobile-nav ul { list-style: none; margin: 0; padding: 0; }
+  .mobile-nav li + li { border-top: 1px solid var(--sky-soft); }
+  .mobile-nav a { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; text-decoration: none; font: 600 22px/1.2 var(--font-head); letter-spacing: -0.02em; }
+  .mobile-nav a::after { content: "→"; font-family: var(--font-body); font-weight: 400; }
+  .mobile-nav .btn { width: 100%; margin-top: var(--s2); }
+  @media (max-width: 399px) { .bar-actions .btn { display: none; } .bar { padding-left: 16px; } }
+  @media (min-width: 1000px) {
+    .nav { display: block; }
+    .menu-toggle, .mobile-nav { display: none !important; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { position: relative; background: var(--sky-mist); padding: 128px 0 var(--s8); overflow: hidden; }
+  .hero::before {
+    content: ""; position: absolute; inset: 0; background-image: var(--dots-navy); opacity: .5; pointer-events: none;
+    -webkit-mask: linear-gradient(#000, transparent 70%); mask: linear-gradient(#000, transparent 70%);
+  }
+  .hero .wrap { position: relative; }
+  .hero-grid { display: grid; gap: var(--s6); align-items: center; }
+  .hero h1 { font-size: clamp(44px, 9.6vw, 84px); line-height: .98; letter-spacing: -0.035em; margin-top: var(--s3); }
+  .hero h1 .hl { position: relative; }
+  .hero h1 .nb { white-space: nowrap; }
+  @media (min-width: 640px) { .hero h1 .hl { white-space: nowrap; } }
+  @media (max-width: 639px) {
+    .hero h1 .hl::after { display: none; }
+    .hero h1 .hl { text-decoration: underline; text-decoration-color: var(--sky); text-decoration-thickness: .3em; text-underline-offset: -.18em; text-decoration-skip-ink: none; }
+  }
+  .hero h1 .hl::after {
+    content: ""; position: absolute; z-index: -1; left: -.06em; right: -.06em; bottom: .04em; height: .34em;
+    background: var(--sky); border-radius: 999px;
+  }
+  .hero h1 .hl { z-index: 0; isolation: isolate; }
+  .hero .lead { margin-top: var(--s3); max-width: 540px; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--s5); }
+  .hero .ctas .btn { flex: 1 1 240px; }
+  .proof { display: flex; align-items: center; gap: var(--s2); margin-top: var(--s5); flex-wrap: wrap; }
+  .avatars { display: flex; }
+  .avatars span {
+    width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--sky-mist);
+    display: flex; align-items: center; justify-content: center;
+    font: 600 12px/1 var(--font-head); color: var(--navy);
+  }
+  .avatars span + span { margin-left: -10px; }
+  .avatars span:nth-child(1) { background: var(--sky); }
+  .avatars span:nth-child(2) { background: var(--sky-soft); }
+  .avatars span:nth-child(3) { background: var(--navy); color: var(--white); }
+  .avatars span:nth-child(4) { background-color: var(--white); background-image: var(--dots-navy); }
+  .proof p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+  .proof strong { color: var(--navy); }
+
+  .hero-art { position: relative; width: 100%; max-width: 560px; margin: 0 auto; aspect-ratio: 1 / 1.02; }
+  .hero-art svg.scene { width: 100%; height: 100%; }
+  .metric {
+    position: absolute; background: var(--white); border: 1px solid var(--line); border-radius: var(--r);
+    padding: 14px 16px; min-width: 156px;
+  }
+  .metric .k { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  .metric .v { font: 600 30px/1.1 var(--font-head); letter-spacing: -0.03em; margin-top: 4px; }
+  .metric .d { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .metric .bars { display: flex; gap: 4px; align-items: flex-end; height: 28px; margin-top: 10px; }
+  .metric .bars i { flex: 1; border-radius: 3px; background: var(--sky-soft); }
+  .metric .bars i.on { background: var(--sky); }
+  .metric-a { left: 0; top: 10%; }
+  .metric-a .v { color: var(--flare); }
+  .metric-b { right: 0; bottom: 6%; }
+  .metric-b .row { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
+  .metric-b .row + .row { margin-top: 6px; }
+  .metric-b .row b { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); flex: none; }
+  .metric-b .row b.n { background: var(--navy); }
+  .float { animation: float 7s var(--ease) infinite alternate; }
+  .float.d2 { animation-delay: -3.5s; }
+  @keyframes float { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
+
+  @media (min-width: 1000px) {
+    .hero { padding: 168px 0 var(--s12); }
+    .hero-grid { grid-template-columns: 1.25fr .75fr; gap: var(--s6); }
+    .hero .ctas .btn { flex: 0 0 auto; }
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee { background: var(--white); border-block: 1px solid var(--line); overflow: hidden; padding: 20px 0; }
+  .marquee-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee ul { display: flex; list-style: none; margin: 0; padding: 0; }
+  .marquee li { display: flex; align-items: center; gap: 28px; padding-right: 28px; font: 600 clamp(20px, 2.4vw, 28px)/1 var(--font-head); letter-spacing: -0.02em; white-space: nowrap; }
+  .marquee li::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sky); }
+  @keyframes scroll { to { transform: translateX(-50%); } }
+
+  /* ---------- Kerncijfers ---------- */
+  .facts { padding: var(--s10) 0; }
+  .facts-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
+  @media (min-width: 640px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) { .facts-grid { grid-template-columns: repeat(4, 1fr); } }
+  .fact { background: var(--white); padding: var(--s4) var(--s3); }
+  .fact .n { font: 600 clamp(40px, 5vw, 56px)/1 var(--font-head); letter-spacing: -0.035em; }
+  .fact .n small { font-size: .45em; letter-spacing: -0.01em; margin-left: 4px; }
+  .fact p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 220px; }
+
+  /* ---------- Aanbod ---------- */
+  .services { display: grid; gap: var(--s2); }
+  @media (min-width: 900px) { .services { grid-template-columns: repeat(3, 1fr); gap: var(--s3); } }
+  .service {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
+    padding: var(--s4); overflow: hidden;
+    transition: border-color .3s var(--ease), transform .3s var(--ease);
+  }
+  .service:hover { border-color: var(--navy); transform: translateY(-4px); }
+  .service .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--s6); }
+  .service .idx { font: 600 14px/1 var(--font-head); color: var(--muted); letter-spacing: 0; }
+  .service .orb { position: relative; width: 72px; height: 72px; }
+  .service .orb::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--sky-soft); background-image: var(--dots-navy); }
+  .service .orb::after { content: ""; position: absolute; width: 36px; height: 36px; right: 0; bottom: 0; border-radius: 50%; background: var(--sky); transition: transform .4s var(--ease); }
+  .service:nth-child(2) .orb::after { left: 0; top: 0; right: auto; bottom: auto; }
+  .service:nth-child(3) .orb::after { background: var(--navy); width: 24px; height: 24px; left: 24px; top: 24px; }
+  .service:hover .orb::after { transform: scale(1.15); }
+  .service h3 { font-size: 28px; }
+  .service > p { color: var(--muted); margin-top: 12px; }
+  .gets { margin-top: auto; padding-top: var(--s4); }
+  .gets h4 { font: 600 12px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: var(--s3); border-top: 1px solid var(--sky-soft); margin-bottom: 14px; }
+  .gets ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .gets li { display: flex; gap: 12px; align-items: flex-start; font-weight: 500; }
+  .gets li svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+
+  /* ---------- Werkwijze ---------- */
+  .process { position: relative; background: var(--sky); overflow: hidden; }
+  .process::before {
+    content: ""; position: absolute; width: 560px; height: 560px; right: -200px; top: -220px;
+    border-radius: 50%; background: var(--white); opacity: .22;
+  }
+  .process::after {
+    content: ""; position: absolute; width: 420px; height: 420px; left: -160px; bottom: -220px;
+    border-radius: 50%; background-image: var(--dots-navy);
+  }
+  .process .wrap { position: relative; z-index: 1; }
+  .process .lead { color: var(--navy); }
+  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); position: relative; counter-reset: s; }
+  @media (min-width: 640px) { .timeline { grid-template-columns: repeat(2, 1fr); } }
+  @media (min-width: 1000px) {
+    .timeline { grid-template-columns: repeat(4, 1fr); gap: var(--s3); padding-top: var(--s7); }
+    .timeline::before {
+      content: ""; position: absolute; left: 12px; right: 12px; top: 11px; height: 2px;
+      background-image: repeating-linear-gradient(90deg, var(--navy) 0 6px, transparent 6px 14px);
+      opacity: .5;
+    }
+    .step::before {
+      content: ""; position: absolute; top: calc(-1 * var(--s7)); left: 0; width: 24px; height: 24px;
+      border-radius: 50%; background: var(--white); border: 3px solid var(--navy);
+    }
+    .step:last-child::before { background: var(--navy); }
+  }
+  .step { position: relative; background: var(--white); border-radius: var(--r-lg); padding: var(--s4) var(--s3); counter-increment: s; }
+  .step .num { font: 600 64px/1 var(--font-head); letter-spacing: -0.04em; color: var(--sky-soft); -webkit-text-stroke: 1.5px var(--navy); }
+  .step .num::before { content: "0" counter(s); }
+  .step h3 { font-size: 26px; margin-top: var(--s3); }
+  .step p { color: var(--muted); margin-top: 8px; }
+  .step .when { display: inline-block; margin-top: var(--s3); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--sky-mist); border: 1px solid var(--line); }
+
+  /* ---------- Statement ---------- */
+  .statement { position: relative; background: var(--navy); overflow: hidden; }
+  .statement .orb-1 { position: absolute; width: 380px; height: 380px; border-radius: 50%; right: -120px; bottom: -180px; background-image: var(--dots-sky); }
+  .statement .orb-2 { position: absolute; width: 120px; height: 120px; border-radius: 50%; right: 6%; top: 56px; background: var(--sky); }
+  @media (max-width: 1099px) { .statement .orb-2 { width: 48px; height: 48px; top: 24px; right: 16px; } }
+  .statement .wrap { position: relative; }
+  .statement blockquote { margin: 0; max-width: 860px; }
+  .statement blockquote p { font: 600 clamp(32px, 6vw, 64px)/1.06 var(--font-head); letter-spacing: -0.03em; color: var(--white); }
+  .statement blockquote p em { font-style: normal; color: var(--sky); }
+  .statement .sig { display: flex; align-items: center; gap: 12px; margin-top: var(--s5); color: var(--on-navy-muted); }
+  .statement .sig::before { content: ""; width: 40px; height: 2px; background: var(--sky); }
+
+  /* ---------- Cases ---------- */
+  .cases { background: var(--sky-mist); }
+  .case-grid { display: grid; gap: var(--s2); }
+  @media (min-width: 900px) { .case-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s3); } }
+  .case { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: border-color .3s var(--ease); }
+  .case:hover { border-color: var(--navy); }
+  .case-visual { position: relative; height: 180px; background: var(--sky-soft); overflow: hidden; }
+  .case-visual::before { content: ""; position: absolute; inset: 0; background-image: var(--dots-navy); }
+  .case-visual .c1, .case-visual .c2 { position: absolute; border-radius: 50%; transition: transform .6s var(--ease); }
+  .case:nth-child(1) .c1 { width: 200px; height: 200px; background: var(--sky); right: -40px; top: -40px; }
+  .case:nth-child(1) .c2 { width: 64px; height: 64px; background: var(--navy); left: 32px; bottom: 32px; }
+  .case:nth-child(2) .c1 { width: 240px; height: 240px; background: var(--sky); left: -60px; bottom: -120px; }
+  .case:nth-child(2) .c2 { width: 40px; height: 40px; background: var(--navy); right: 48px; top: 40px; }
+  .case:nth-child(3) .c1 { width: 160px; height: 160px; background: var(--white); right: 40px; bottom: -48px; }
+  .case:nth-child(3) .c2 { width: 88px; height: 88px; background: var(--sky); left: 40px; top: 32px; }
+  .case:hover .c1 { transform: scale(1.06); }
+  .case-visual .tag { position: absolute; left: 16px; top: 16px; z-index: 1; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; color: var(--navy); background: var(--white); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
+  .case-body { padding: var(--s4) var(--s3); display: flex; flex-direction: column; flex: 1; }
+  .case .brand { font-size: 20px; }
+  .case .figure { font: 600 clamp(64px, 8vw, 88px)/1 var(--font-head); letter-spacing: -0.045em; color: var(--flare); margin-top: var(--s3); }
+  .case .figure-label { font-weight: 600; margin-top: 8px; }
+  .case .summary { color: var(--muted); margin-top: var(--s2); padding-top: var(--s2); border-top: 1px solid var(--sky-soft); }
+
+  /* ---------- Formulieren ---------- */
+  .audit { position: relative; }
+  .audit-grid, .intake-grid { display: grid; gap: var(--s6); }
+  @media (min-width: 1000px) {
+    .audit-grid { grid-template-columns: .9fr 1.1fr; gap: var(--s10); align-items: start; }
+    .audit-intro { position: sticky; top: 120px; }
+    .intake-grid { grid-template-columns: minmax(0, 1fr) 400px; gap: var(--s5); align-items: start; }
+    .contact-aside { position: sticky; top: 120px; }
+  }
+  .audit-intro h2 { margin-top: var(--s3); }
+  .audit-intro .lead { margin-top: var(--s3); }
+  .deliverables { list-style: none; padding: 0; margin: var(--s5) 0 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+  .deliverables li { display: flex; gap: var(--s2); align-items: flex-start; background: var(--white); padding: 20px; }
+  .deliverables .n { flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--sky); display: flex; align-items: center; justify-content: center; font: 600 15px/1 var(--font-head); }
+  .deliverables strong { display: block; font-weight: 600; }
+  .deliverables span.t { color: var(--muted); font-size: 15px; }
+
+  .form-card { background: var(--sky-mist); border: 1px solid var(--line); border-radius: var(--r-xl); padding: var(--s3); }
+  @media (min-width: 768px) { .form-card { padding: var(--s6); } }
+  .form-card-head { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); margin-bottom: var(--s4); flex-wrap: wrap; }
+  .form-card-head h3 { font-size: 24px; }
+  .pill-info { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; background: var(--white); border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px; }
+  .pill-info::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--sky); }
+
+  .fields { display: grid; gap: 20px; }
+  @media (min-width: 640px) { .fields { grid-template-columns: 1fr 1fr; } .field.full { grid-column: 1 / -1; } }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
+  .form-block + .form-block { margin-top: var(--s5); padding-top: var(--s5); border-top: 1px solid var(--line); }
+  .block-title { display: flex; align-items: center; gap: 12px; font: 600 20px/1.2 var(--font-head); letter-spacing: -0.02em; padding: 0; margin-bottom: var(--s3); }
+  .block-title i { font-style: normal; width: 28px; height: 28px; border-radius: 50%; background: var(--navy); color: var(--white); font-size: 13px; display: inline-flex; align-items: center; justify-content: center; }
+  .field > label, .field > legend { display: block; font-weight: 600; font-size: 15px; margin-bottom: 8px; padding: 0; color: var(--navy); }
+  .opt { font-weight: 400; color: var(--muted); }
+  .hint { font-size: 14px; color: var(--muted); margin-top: 6px; }
+  input[type="text"], input[type="email"], input[type="url"], input[type="date"], select, textarea {
+    width: 100%; min-height: 52px; padding: 14px 16px;
+    font: 400 16px/1.4 var(--font-body); color: var(--navy);
+    background: var(--white); border: 1.5px solid var(--line-strong); border-radius: 12px;
+    appearance: none; -webkit-appearance: none;
+    transition: border-color .2s var(--ease);
+  }
+  input:hover, select:hover, textarea:hover { border-color: var(--navy); }
+  textarea { min-height: 120px; resize: vertical; }
+  select {
+    cursor: pointer; padding-right: 44px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%230B2545' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 18px center;
+  }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid var(--sky); outline-offset: 0; border-color: var(--navy); border-radius: 12px; }
+  input::placeholder, textarea::placeholder { color: #5E7290; }
+  .field.invalid input, .field.invalid select, .field.invalid textarea { border-color: var(--error); }
+  .error { display: none; align-items: center; gap: 6px; color: var(--error); font-size: 14px; font-weight: 500; margin-top: 6px; }
+  .error::before { content: "!"; width: 16px; height: 16px; border-radius: 50%; background: var(--error); color: var(--white); font-size: 11px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; flex: none; }
+  .field.invalid .error { display: flex; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { position: relative; }
+  .chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .chip span {
+    display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 10px 18px;
+    border-radius: 999px; border: 1.5px solid var(--line-strong); background: var(--white);
+    font-weight: 500; font-size: 15px; cursor: pointer; user-select: none;
+    transition: background-color .2s var(--ease), border-color .2s var(--ease);
+  }
+  .chip span::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--navy); transition: background-color .2s; }
+  .chip span:hover { border-color: var(--navy); }
+  .chip input:checked + span { background: var(--sky); border-color: var(--sky); }
+  .chip input:checked + span::before { background: var(--navy); }
+  .chip input:focus-visible + span { outline: 3px solid var(--navy); outline-offset: 2px; }
+  .field.invalid .chip span { border-color: var(--error); }
+
+  .form-foot { margin-top: var(--s4); display: grid; gap: var(--s2); }
+  .form-foot .btn { width: 100%; }
+  .form-foot .note { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+  .form-foot .note svg { width: 16px; height: 16px; flex: none; margin-top: 3px; }
+  @media (min-width: 640px) {
+    .form-foot { grid-template-columns: auto 1fr; align-items: center; gap: var(--s3); }
+    .form-foot .btn { width: auto; }
+  }
+
+  .thanks[hidden] { display: none; }
+  .thanks { animation: rise .6s var(--ease) both; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+  .thanks .badge { position: relative; width: 72px; height: 72px; margin-bottom: var(--s4); }
+  .thanks .badge::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--sky-soft); background-image: var(--dots-navy); }
+  .thanks .badge span { position: absolute; inset: 12px; border-radius: 50%; background: var(--sky); display: flex; align-items: center; justify-content: center; }
+  .thanks .badge svg { width: 22px; height: 22px; }
+  .thanks h3 { font-size: clamp(26px, 3vw, 32px); }
+  .thanks > p { margin-top: 12px; color: var(--muted); }
+  .thanks ol { list-style: none; margin: var(--s4) 0 0; padding: 0; display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; counter-reset: n; }
+  .thanks ol li { display: flex; gap: var(--s2); padding: 18px 20px; background: var(--white); counter-increment: n; }
+  .thanks ol li::before { content: counter(n); flex: none; width: 32px; height: 32px; border-radius: 50%; background: var(--navy); color: var(--white); font: 600 14px/1 var(--font-head); display: flex; align-items: center; justify-content: center; }
+  .thanks ol strong { display: block; }
+  .thanks ol span { color: var(--muted); font-size: 15px; }
+  .thanks .btn { margin-top: var(--s4); }
+
+  /* ---------- FAQ ---------- */
+  .faq-grid { display: grid; gap: var(--s5); }
+  @media (min-width: 1000px) { .faq-grid { grid-template-columns: .8fr 1.2fr; gap: var(--s10); } }
+  .faq-grid .lead { margin-top: var(--s3); }
+  .faq-list { border-top: 1px solid var(--line); }
+  .faq-list details { border-bottom: 1px solid var(--line); }
+  .faq-list summary {
+    list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: var(--s2);
+    padding: var(--s3) 0; font: 600 clamp(18px, 2vw, 22px)/1.3 var(--font-head); letter-spacing: -0.02em;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary .pm { position: relative; flex: none; width: 36px; height: 36px; border-radius: 50%; background: var(--sky-soft); transition: background-color .2s var(--ease); }
+  .faq-list summary .pm::before, .faq-list summary .pm::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 2px; background: var(--navy); transform: translate(-50%, -50%); transition: transform .3s var(--ease); }
+  .faq-list summary .pm::after { transform: translate(-50%, -50%) rotate(90deg); }
+  .faq-list details[open] summary .pm { background: var(--sky); }
+  .faq-list details[open] summary .pm::after { transform: translate(-50%, -50%) rotate(0); }
+  .faq-list summary:hover .pm { background: var(--sky); }
+  .faq-list .a { padding: 0 var(--s6) var(--s3) 0; color: var(--muted); max-width: 640px; }
+
+  /* ---------- Intake ---------- */
+  .intake { background: var(--sky-mist); }
+  .intake .form-card { background: var(--white); }
+  .contact-aside { display: grid; gap: var(--s2); }
+  .contact-card { position: relative; overflow: hidden; background: var(--sky); border-radius: var(--r-xl); padding: var(--s4) var(--s3); }
+  @media (min-width: 768px) { .contact-card { padding: var(--s5) var(--s4); } }
+  .contact-card::after { content: ""; position: absolute; width: 220px; height: 220px; right: -80px; bottom: -80px; border-radius: 50%; background-image: var(--dots-navy); }
+  .contact-card > * { position: relative; z-index: 1; }
+  .contact-card h3 { font-size: 28px; }
+  .contact-card p { margin-top: 8px; }
+  .contact-links { list-style: none; padding: 0; margin: var(--s4) 0 0; display: grid; gap: 8px; }
+  .contact-links a {
+    display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 10px 16px;
+    background: var(--white); border-radius: var(--r); text-decoration: none; font-weight: 600; font-size: 15px; overflow-wrap: anywhere;
+    border: 2px solid var(--white); transition: border-color .2s var(--ease);
+  }
+  .contact-links a:hover { border-color: var(--navy); }
+  .contact-links svg { width: 20px; height: 20px; flex: none; }
+  .contact-links .go { margin-left: auto; width: 16px; height: 16px; }
+  .aside-note { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-xl); padding: var(--s4); }
+  .aside-note h3 { font-size: 22px; }
+  .aside-note p { color: var(--muted); margin-top: 8px; }
+  .aside-note .btn { margin-top: var(--s3); }
+
+  /* ---------- Footer ---------- */
+  .site-footer { background: var(--navy); color: var(--on-navy-muted); padding: var(--s12) 0 var(--s4); overflow: hidden; }
+  .footer-cta { display: grid; gap: var(--s4); padding-bottom: var(--s10); border-bottom: 1px solid var(--navy-2); }
+  .footer-cta h2 { color: var(--white); font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.03em; }
+  .footer-cta h2 em { font-style: normal; color: var(--sky); }
+  .footer-cta .btns { display: flex; flex-wrap: wrap; gap: 12px; }
+  .footer-cta .btn-ghost { color: var(--white); border-color: var(--white); }
+  .footer-cta .btn-ghost:hover { background: var(--white); color: var(--navy); }
+  @media (min-width: 1000px) { .footer-cta { grid-template-columns: 1fr auto; align-items: end; } }
+  .footer-grid { display: grid; gap: var(--s5); padding: var(--s8) 0; }
+  @media (min-width: 768px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; } }
+  .footer-grid p { margin-top: var(--s2); max-width: 340px; }
+  .footer-grid h3 { font: 600 12px/1 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--sky); margin-bottom: var(--s3); }
+  .footer-grid ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .site-footer a { color: var(--white); text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .giant {
+    font: 600 clamp(48px, 13.4vw, 196px)/.85 var(--font-head); letter-spacing: -0.05em;
+    color: var(--white); white-space: nowrap; display: flex; align-items: flex-start; gap: .06em;
+    user-select: none;
+  }
+  .giant .dot { width: .16em; height: .16em; border-radius: 50%; background: var(--sky); margin-top: .1em; flex: none; }
+  .footer-bottom { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: space-between; margin-top: var(--s5); padding-top: var(--s3); border-top: 1px solid var(--navy-2); font-size: 14px; }
+  .footer-bottom ul { display: flex; gap: var(--s3); list-style: none; margin: 0; padding: 0; }
+
+  /* ---------- Scroll-animaties ---------- */
+  .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: var(--d, 0s); }
+  .js .reveal.in { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .js .reveal { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="header">
+  <div class="wrap">
+    <div class="bar">
+      <a href="#top" class="wordmark" aria-label="Fieldwork Studios, naar boven"><span class="dot" aria-hidden="true"></span>Fieldwork Studios</a>
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <ul>
+          <li><a href="#aanbod">Aanbod</a></li>
+          <li><a href="#werkwijze">Werkwijze</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#intake">Intake</a></li>
+        </ul>
+      </nav>
+      <div class="bar-actions">
+        <a href="#audit" class="btn btn-primary btn-sm">Gratis audit</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="i-open" d="M4 8h16M4 16h16"/><path class="i-close" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg>
+        </button>
+      </div>
+    </div>
+    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie" hidden>
+      <ul>
+        <li><a href="#aanbod">Aanbod</a></li>
+        <li><a href="#werkwijze">Werkwijze</a></li>
+        <li><a href="#cases">Cases</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#intake">Plan een intake</a></li>
+      </ul>
+      <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= 1. HERO ================= -->
+  <section class="hero" id="top" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="label reveal">Creatieve strategie voor D2C-merken</span>
+        <h1 id="hero-title" class="reveal" style="--d:.08s">Ads die <span class="hl">blijven hangen.</span> <span class="nb">En verkopen.</span></h1>
+        <p class="lead reveal" style="--d:.16s">We zoeken uit waarom jouw klanten kopen en maken daar ads van die je kunt meten, testen en opschalen.</p>
+        <div class="ctas reveal" style="--d:.24s">
+          <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan
+            <svg class="arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+          <a href="#intake" class="btn btn-ghost">Plan een intake</a>
+        </div>
+        <div class="proof reveal" style="--d:.32s">
+          <div class="avatars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+          <p><strong>Audit binnen 3 werkdagen.</strong><br>Gratis, zonder verplichtingen.</p>
+        </div>
+      </div>
+
+      <div class="hero-art reveal" style="--d:.2s" aria-hidden="true">
+        <svg class="scene" viewBox="0 0 560 572" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="pd" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#FFFFFF" fill-opacity=".6"/></pattern>
+            <pattern id="pn" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#0B2545" fill-opacity=".25"/></pattern>
+            <clipPath id="cb"><circle cx="320" cy="250" r="210"/></clipPath>
+            <clipPath id="cs"><circle cx="150" cy="420" r="120"/></clipPath>
+          </defs>
+          <circle cx="320" cy="250" r="210" fill="#77C9F7"/>
+          <rect x="100" y="30" width="440" height="440" fill="url(#pd)" clip-path="url(#cb)"/>
+          <circle cx="150" cy="420" r="120" fill="#DDF0FD"/>
+          <rect x="20" y="290" width="260" height="260" fill="url(#pn)" clip-path="url(#cs)"/>
+          <circle cx="470" cy="500" r="44" fill="#0B2545"/>
+          <!-- plot -->
+          <path d="M60 470 H520" stroke="#0B2545" stroke-opacity=".3" stroke-width="2" stroke-dasharray="4 8"/>
+          <polyline points="80,430 150,380 210,400 270,320 340,290 410,200 470,150" fill="none" stroke="#0B2545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <g fill="#FFFFFF" stroke="#0B2545" stroke-width="3">
+            <circle cx="80" cy="430" r="7"/><circle cx="150" cy="380" r="7"/><circle cx="210" cy="400" r="7"/>
+            <circle cx="270" cy="320" r="7"/><circle cx="340" cy="290" r="7"/><circle cx="410" cy="200" r="7"/>
+          </g>
+          <circle cx="470" cy="150" r="16" fill="#0B2545" fill-opacity=".15"/>
+          <circle cx="470" cy="150" r="9" fill="#0B2545"/>
+        </svg>
+        <div class="metric metric-a float">
+          <div class="k">Hook rate</div>
+          <div class="v">38%</div>
+          <div class="d">na 2 testrondes</div>
+          <div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i class="on" style="height:70%"></i><i class="on" style="height:100%"></i></div>
+        </div>
+        <div class="metric metric-b float d2">
+          <div class="k" style="margin-bottom:8px">Deze sprint</div>
+          <div class="row"><b></b>16 nieuwe ads</div>
+          <div class="row"><b></b>4 angles getest</div>
+          <div class="row"><b class="n"></b>2 winnaars</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MARQUEE ================= -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <ul><li>Klantonderzoek</li><li>Ad-angles</li><li>UGC</li><li>Video</li><li>Statics</li><li>Hooks</li><li>Meta Ads</li><li>TikTok</li><li>Testplannen</li><li>Creatieve analyse</li></ul>
+      <ul><li>Klantonderzoek</li><li>Ad-angles</li><li>UGC</li><li>Video</li><li>Statics</li><li>Hooks</li><li>Meta Ads</li><li>TikTok</li><li>Testplannen</li><li>Creatieve analyse</li></ul>
+    </div>
+  </div>
+
+  <!-- ================= KERNCIJFERS ================= -->
+  <div class="facts">
+    <div class="wrap">
+      <div class="facts-grid">
+        <div class="fact reveal"><div class="n">3<small>dagen</small></div><p>tot je gratis audit in je inbox staat.</p></div>
+        <div class="fact reveal" style="--d:.08s"><div class="n">12–20</div><p>nieuwe ads per maand, klaar om te testen.</p></div>
+        <div class="fact reveal" style="--d:.16s"><div class="n">2<small>weken</small></div><p>per testsprint, met een heldere rapportage.</p></div>
+        <div class="fact reveal" style="--d:.24s"><div class="n">1</div><p>vast aanspreekpunt. Geen accountmanagers ertussen.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 2. AANBOD ================= -->
+  <section id="aanbod" aria-labelledby="aanbod-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="label reveal">Aanbod</span>
+          <h2 id="aanbod-title" class="h-xl reveal">Drie manieren om je ads beter te maken.</h2>
+        </div>
+        <p class="lead reveal">Los in te zetten of als één doorlopend traject. Altijd gericht op je cijfers, niet op mooie plaatjes.</p>
+      </div>
+      <div class="services">
+        <article class="service reveal">
+          <div class="top"><span class="idx">01</span><span class="orb" aria-hidden="true"></span></div>
+          <h3>Creatieve strategie</h3>
+          <p>We onderzoeken je klanten, concurrenten en data en bepalen welke boodschap het meest oplevert.</p>
+          <div class="gets">
+            <h4>Wat je krijgt</h4>
+            <ul>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>5–8 uitgewerkte ad-angles</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Messaging per doelgroep</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Testplan voor 90 dagen</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service reveal" style="--d:.1s">
+          <div class="top"><span class="idx">02</span><span class="orb" aria-hidden="true"></span></div>
+          <h3>Ad-creatie</h3>
+          <p>Video, UGC en statics voor Meta en TikTok, gemaakt om te testen en snel op te schalen.</p>
+          <div class="gets">
+            <h4>Wat je krijgt</h4>
+            <ul>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>12–20 nieuwe ads per maand</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 hook-varianten per concept</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alle formaten, klaar om te lanceren</li>
+            </ul>
+          </div>
+        </article>
+        <article class="service reveal" style="--d:.2s">
+          <div class="top"><span class="idx">03</span><span class="orb" aria-hidden="true"></span></div>
+          <h3>Testen &amp; analyse</h3>
+          <p>Een vaste testcyclus die laat zien welke ads winnen en, belangrijker, waarom.</p>
+          <div class="gets">
+            <h4>Wat je krijgt</h4>
+            <ul>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Rapportage elke 2 weken</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bibliotheek met winnende ads</li>
+              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Concrete next steps per sprint</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 3. WERKWIJZE ================= -->
+  <section id="werkwijze" class="process" aria-labelledby="werkwijze-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="label on-sky reveal">Werkwijze</span>
+          <h2 id="werkwijze-title" class="h-xl reveal">Eerst onderzoek, dan creatie.</h2>
+        </div>
+        <p class="lead reveal">Vier stappen, steeds opnieuw. Elke ronde maakt de volgende beter, omdat we meten in plaats van gokken.</p>
+      </div>
+      <ol class="timeline">
+        <li class="step reveal">
+          <div class="num" aria-hidden="true"></div>
+          <h3>Onderzoek</h3>
+          <p>We lezen reviews, spreken klanten en ontleden je ads en die van je concurrenten.</p>
+          <span class="when">Week 1</span>
+        </li>
+        <li class="step reveal" style="--d:.1s">
+          <div class="num" aria-hidden="true"></div>
+          <h3>Strategie</h3>
+          <p>We kiezen de angles met de meeste kans en leggen vast wat we gaan testen.</p>
+          <span class="when">Week 2</span>
+        </li>
+        <li class="step reveal" style="--d:.2s">
+          <div class="num" aria-hidden="true"></div>
+          <h3>Creatie</h3>
+          <p>We maken per angle meerdere ads, met verschillende hooks en formats.</p>
+          <span class="when">Week 3</span>
+        </li>
+        <li class="step reveal" style="--d:.3s">
+          <div class="num" aria-hidden="true"></div>
+          <h3>Testen</h3>
+          <p>We meten wat werkt, schalen de winnaars op en nemen de lessen mee naar de volgende ronde.</p>
+          <span class="when">Elke 2 weken</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= STATEMENT ================= -->
+  <section class="statement on-navy" aria-label="Onze overtuiging">
+    <span class="orb-1" aria-hidden="true"></span>
+    <span class="orb-2" aria-hidden="true"></span>
+    <div class="wrap">
+      <blockquote class="reveal">
+        <p>Goede ads zijn geen geluk. Het is onderzoek <em>dat je terugziet in je cijfers.</em></p>
+        <p class="sig" style="font:500 16px/1.4 var(--font-body);letter-spacing:0;color:var(--on-navy-muted)">Zo werken we bij Fieldwork Studios</p>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ================= 4. CASES ================= -->
+  <!-- PLACEHOLDER: vervang merknamen, categorieën en cijfers door echte, goedgekeurde cases. -->
+  <section id="cases" class="cases" aria-labelledby="cases-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="label reveal">Cases</span>
+          <h2 id="cases-title" class="h-xl reveal">Wat het oplevert.</h2>
+        </div>
+        <p class="lead reveal">Resultaten van D2C-merken waar we mee werkten. Gemeten, niet geschat.</p>
+      </div>
+      <div class="case-grid">
+        <article class="case reveal">
+          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="case-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <h3 class="brand">Merknaam A</h3><span class="tag">Verzorging</span>
+            </div>
+            <p class="figure">+68%</p>
+            <p class="figure-label">ROAS in 90 dagen</p>
+            <p class="summary">Nieuwe angles op basis van 400 klantreviews maakten van een plateau weer groei.</p>
+          </div>
+        </article>
+        <article class="case reveal" style="--d:.1s">
+          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="case-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <h3 class="brand">Merknaam B</h3><span class="tag">Food &amp; drinks</span>
+            </div>
+            <p class="figure">−41%</p>
+            <p class="figure-label">kosten per aankoop</p>
+            <p class="summary">Een vaste testcyclus met 16 ads per maand vond de winnaars twee keer zo snel.</p>
+          </div>
+        </article>
+        <article class="case reveal" style="--d:.2s">
+          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="case-body">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+              <h3 class="brand">Merknaam C</h3><span class="tag">Fashion</span>
+            </div>
+            <p class="figure">3,2×</p>
+            <p class="figure-label">meer omzet uit TikTok</p>
+            <p class="summary">UGC-concepten met een scherpere hook maakten van TikTok het best presterende kanaal.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 5. AUDIT ================= -->
+  <section id="audit" class="audit" aria-labelledby="audit-title">
+    <div class="wrap audit-grid">
+      <div class="audit-intro">
+        <span class="label reveal">Gratis audit</span>
+        <h2 id="audit-title" class="h-xl reveal">Binnen 3 werkdagen een audit van je ads in je inbox.</h2>
+        <p class="lead reveal">Geen verkooppraatje, wel een eerlijke blik op wat werkt, wat niet en wat je morgen kunt verbeteren.</p>
+        <ul class="deliverables reveal">
+          <li><span class="n" aria-hidden="true">1</span><span><strong>Analyse van je huidige ads</strong><span class="t">Hooks, boodschap en formats langs de meetlat.</span></span></li>
+          <li><span class="n" aria-hidden="true">2</span><span><strong>Vergelijking met 3 concurrenten</strong><span class="t">Waar laten zij kansen liggen, en waar jij?</span></span></li>
+          <li><span class="n" aria-hidden="true">3</span><span><strong>3 concrete verbeterpunten</strong><span class="t">Direct toe te passen, ook als je niet met ons verder gaat.</span></span></li>
+        </ul>
+      </div>
+
+      <div class="form-card reveal" style="--d:.1s">
+        <form id="audit-form" class="js-form" novalidate data-endpoint="" aria-labelledby="audit-form-title">
+          <div class="form-card-head">
+            <h3 id="audit-form-title">Vraag je gratis audit aan</h3>
+            <span class="pill-info">Duurt 1 minuut</span>
+          </div>
+          <div class="fields">
+            <div class="field">
+              <label for="a-naam">Naam</label>
+              <input id="a-naam" name="naam" type="text" autocomplete="name" required aria-describedby="a-naam-err">
+              <p class="error" id="a-naam-err">Vul je naam in.</p>
+            </div>
+            <div class="field">
+              <label for="a-email">E-mail</label>
+              <input id="a-email" name="email" type="email" autocomplete="email" required aria-describedby="a-email-err">
+              <p class="error" id="a-email-err">Vul een geldig e-mailadres in.</p>
+            </div>
+            <div class="field full">
+              <label for="a-merk">Merknaam en website</label>
+              <input id="a-merk" name="merk" type="text" placeholder="Merknaam — merknaam.nl" required aria-describedby="a-merk-err">
+              <p class="error" id="a-merk-err">Vul je merknaam en website in.</p>
+            </div>
+            <div class="field full">
+              <label for="a-ads">Link naar je ads</label>
+              <input id="a-ads" name="ads_link" type="url" inputmode="url" placeholder="https://www.facebook.com/ads/library/…" required aria-describedby="a-ads-hint a-ads-err">
+              <p class="hint" id="a-ads-hint">Meta Ad Library of je TikTok-profiel.</p>
+              <p class="error" id="a-ads-err">Vul een geldige link in, beginnend met https://</p>
+            </div>
+            <fieldset class="field full" aria-describedby="a-uitdaging-err">
+              <legend>Grootste uitdaging</legend>
+              <div class="chips">
+                <label class="chip"><input type="radio" name="uitdaging" value="Groei" required><span>Groei</span></label>
+                <label class="chip"><input type="radio" name="uitdaging" value="ROAS"><span>ROAS</span></label>
+                <label class="chip"><input type="radio" name="uitdaging" value="Creatives"><span>Creatives</span></label>
+                <label class="chip"><input type="radio" name="uitdaging" value="Positionering"><span>Positionering</span></label>
+              </div>
+              <p class="error" id="a-uitdaging-err">Kies je grootste uitdaging.</p>
+            </fieldset>
+            <div class="field full">
+              <label for="a-budget">Maandelijks advertentiebudget</label>
+              <select id="a-budget" name="budget" required aria-describedby="a-budget-err">
+                <option value="">Kies een range</option>
+                <option>Minder dan € 5.000</option>
+                <option>€ 5.000 – € 15.000</option>
+                <option>€ 15.000 – € 50.000</option>
+                <option>€ 50.000 – € 150.000</option>
+                <option>Meer dan € 150.000</option>
+              </select>
+              <p class="error" id="a-budget-err">Kies een budget-range.</p>
+            </div>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-primary">Vraag mijn gratis audit aan
+              <svg class="arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+            <p class="note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="2"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg>Gratis en vrijblijvend. We gebruiken je gegevens alleen voor deze audit.</p>
+          </div>
+        </form>
+
+        <div class="thanks" id="audit-thanks" hidden tabindex="-1" role="status">
+          <div class="badge" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+          <h3>Bedankt<span class="js-name"></span>, je aanvraag is binnen.</h3>
+          <p>Dit gebeurt er nu:</p>
+          <ol>
+            <li><span><strong>Vandaag</strong><span>Je krijgt een bevestiging per e-mail.</span></span></li>
+            <li><span><strong>Binnen 3 werkdagen</strong><span>We analyseren je ads en sturen de audit naar je inbox.</span></span></li>
+            <li><span><strong>Daarna</strong><span>Wil je de punten bespreken? Plan dan een intake. Hoeft niet.</span></span></li>
+          </ol>
+          <a href="#intake" class="btn btn-ghost">Plan alvast een intake</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section id="faq" aria-labelledby="faq-title" style="padding-top:0">
+    <div class="wrap faq-grid">
+      <div>
+        <span class="label reveal">Veelgestelde vragen</span>
+        <h2 id="faq-title" class="h-xl reveal" style="margin-top:24px">Goed om te weten.</h2>
+        <p class="lead reveal">Staat je vraag er niet bij? Mail ons, dan krijg je binnen 1 werkdag antwoord.</p>
+      </div>
+      <div class="faq-list reveal">
+        <details>
+          <summary>Is de audit echt gratis?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="a">Ja. Je krijgt een volledige analyse met verbeterpunten die je zelf kunt toepassen. Pas als je verder wilt, praten we over een samenwerking.</p>
+        </details>
+        <details>
+          <summary>Voor welke merken werken jullie?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="a">Voor e-commerce- en D2C-merken die al adverteren op Meta of TikTok en willen groeien met betere creatives. Meestal vanaf € 5.000 advertentiebudget per maand.</p>
+        </details>
+        <details>
+          <summary>Doen jullie ook de media buying?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="a">Onze focus ligt op strategie, creatie en testen. We werken nauw samen met je eigen media buyer of bureau, of brengen je in contact met partners.</p>
+        </details>
+        <details>
+          <summary>Hoe snel zien we resultaat?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="a">De eerste ads gaan binnen 3 weken live. Na 2 testrondes, ongeveer 6 weken, weet je welke angles werken en waar je op kunt opschalen.</p>
+        </details>
+        <details>
+          <summary>Zit ik vast aan een lang contract?<span class="pm" aria-hidden="true"></span></summary>
+          <p class="a">Nee. We starten met een traject van 3 maanden. Daarna kun je per maand verlengen of stoppen.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 6. INTAKE ================= -->
+  <section id="intake" class="intake" aria-labelledby="intake-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <div>
+          <span class="label reveal">Intake</span>
+          <h2 id="intake-title" class="h-xl reveal">Klaar om te starten? Plan een intake.</h2>
+        </div>
+        <p class="lead reveal">Vertel waar je staat en waar je heen wilt. Dan komen we goed voorbereid naar een gesprek van 30 minuten.</p>
+      </div>
+      <div class="intake-grid">
+        <div class="form-card reveal">
+          <form id="intake-form" class="js-form" novalidate data-endpoint="" aria-labelledby="intake-title">
+            <fieldset class="form-block">
+              <legend class="block-title"><i aria-hidden="true">1</i>Over jou en je merk</legend>
+              <div class="fields">
+                <div class="field">
+                  <label for="i-naam">Naam</label>
+                  <input id="i-naam" name="naam" type="text" autocomplete="name" required aria-describedby="i-naam-err">
+                  <p class="error" id="i-naam-err">Vul je naam in.</p>
+                </div>
+                <div class="field">
+                  <label for="i-email">E-mail</label>
+                  <input id="i-email" name="email" type="email" autocomplete="email" required aria-describedby="i-email-err">
+                  <p class="error" id="i-email-err">Vul een geldig e-mailadres in.</p>
+                </div>
+                <div class="field full">
+                  <label for="i-merk">Merknaam en website</label>
+                  <input id="i-merk" name="merk" type="text" placeholder="Merknaam — merknaam.nl" required aria-describedby="i-merk-err">
+                  <p class="error" id="i-merk-err">Vul je merknaam en website in.</p>
+                </div>
+                <div class="field full">
+                  <label for="i-ads">Link naar je ads</label>
+                  <input id="i-ads" name="ads_link" type="url" inputmode="url" placeholder="https://www.facebook.com/ads/library/…" required aria-describedby="i-ads-hint i-ads-err">
+                  <p class="hint" id="i-ads-hint">Meta Ad Library of je TikTok-profiel.</p>
+                  <p class="error" id="i-ads-err">Vul een geldige link in, beginnend met https://</p>
+                </div>
+                <fieldset class="field full" aria-describedby="i-uitdaging-err">
+                  <legend>Grootste uitdaging</legend>
+                  <div class="chips">
+                    <label class="chip"><input type="radio" name="uitdaging" value="Groei" required><span>Groei</span></label>
+                    <label class="chip"><input type="radio" name="uitdaging" value="ROAS"><span>ROAS</span></label>
+                    <label class="chip"><input type="radio" name="uitdaging" value="Creatives"><span>Creatives</span></label>
+                    <label class="chip"><input type="radio" name="uitdaging" value="Positionering"><span>Positionering</span></label>
+                  </div>
+                  <p class="error" id="i-uitdaging-err">Kies je grootste uitdaging.</p>
+                </fieldset>
+                <div class="field full">
+                  <label for="i-budget">Maandelijks advertentiebudget</label>
+                  <select id="i-budget" name="budget" required aria-describedby="i-budget-err">
+                    <option value="">Kies een range</option>
+                    <option>Minder dan € 5.000</option>
+                    <option>€ 5.000 – € 15.000</option>
+                    <option>€ 15.000 – € 50.000</option>
+                    <option>€ 50.000 – € 150.000</option>
+                    <option>Meer dan € 150.000</option>
+                  </select>
+                  <p class="error" id="i-budget-err">Kies een budget-range.</p>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="form-block">
+              <legend class="block-title"><i aria-hidden="true">2</i>Je doelen en context</legend>
+              <div class="fields">
+                <div class="field full">
+                  <label for="i-doel">Doel voor de komende 3 maanden</label>
+                  <textarea id="i-doel" name="doel" placeholder="Bijv. ROAS van 2,1 naar 3 bij gelijk budget" required aria-describedby="i-doel-err"></textarea>
+                  <p class="error" id="i-doel-err">Vertel kort wat je wilt bereiken.</p>
+                </div>
+                <div class="field full">
+                  <label for="i-geprobeerd">Wat heb je al geprobeerd? <span class="opt">(optioneel)</span></label>
+                  <textarea id="i-geprobeerd" name="geprobeerd" placeholder="Bureaus, freelancers, formats, kanalen…"></textarea>
+                </div>
+                <div class="field full">
+                  <label for="i-doelgroep">Doelgroep en belangrijkste producten</label>
+                  <textarea id="i-doelgroep" name="doelgroep_producten" placeholder="Wie koopt er, en wat verkoopt het best?" required aria-describedby="i-doelgroep-err"></textarea>
+                  <p class="error" id="i-doelgroep-err">Beschrijf kort je doelgroep en producten.</p>
+                </div>
+                <div class="field">
+                  <label for="i-start">Gewenste startdatum</label>
+                  <input id="i-start" name="startdatum" type="date" required aria-describedby="i-start-err">
+                  <p class="error" id="i-start-err">Kies een startdatum vanaf vandaag.</p>
+                </div>
+                <div class="field">
+                  <label for="i-moment">Voorkeur voor een gespreksmoment</label>
+                  <select id="i-moment" name="gespreksmoment" required aria-describedby="i-moment-err">
+                    <option value="">Kies een moment</option>
+                    <option>Ochtend (9:00 – 12:00)</option>
+                    <option>Middag (12:00 – 15:00)</option>
+                    <option>Eind van de middag (15:00 – 17:30)</option>
+                    <option>Maakt niet uit</option>
+                  </select>
+                  <p class="error" id="i-moment-err">Kies een moment.</p>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-foot">
+              <button type="submit" class="btn btn-primary">Plan mijn intake
+                <svg class="arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></button>
+              <p class="note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg>We reageren binnen 1 werkdag met een uitnodiging.</p>
+            </div>
+          </form>
+
+          <div class="thanks" id="intake-thanks" hidden tabindex="-1" role="status">
+            <div class="badge" aria-hidden="true"><span><svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></div>
+            <h3>Top<span class="js-name"></span>, we hebben je intake ontvangen.</h3>
+            <p>Dit gebeurt er nu:</p>
+            <ol>
+              <li><span><strong>Binnen 1 werkdag</strong><span>Je krijgt een agenda-uitnodiging op je gekozen moment.</span></span></li>
+              <li><span><strong>Voor het gesprek</strong><span>We bekijken je ads, site en concurrenten, zodat we niet bij nul beginnen.</span></span></li>
+              <li><span><strong>In het gesprek</strong><span>30 minuten over je doelen, met een eerste voorstel voor de aanpak.</span></span></li>
+            </ol>
+          </div>
+        </div>
+
+        <aside class="contact-aside" aria-label="Direct contact">
+          <div class="contact-card reveal">
+            <h3>Liever direct contact?</h3>
+            <p>Mail of stuur een bericht. We reageren binnen 1 werkdag.</p>
+            <ul class="contact-links">
+              <!-- PLACEHOLDER: controleer e-mailadres en LinkedIn-URL -->
+              <li><a href="mailto:hallo@fieldworkstudios.nl">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+                hallo@fieldworkstudios.nl
+                <svg class="go" viewBox="0 0 16 16" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
+              <li><a href="https://www.linkedin.com/company/fieldwork-studios" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="#0B2545" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5.1c0-1.22-.02-2.78-1.7-2.78-1.7 0-1.96 1.33-1.96 2.7V21h-4z"/></svg>
+                LinkedIn<span class="sr-only"> (opent in nieuw tabblad)</span>
+                <svg class="go" viewBox="0 0 16 16" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 11l6-6M6 5h5v5"/></svg></a></li>
+            </ul>
+          </div>
+          <div class="aside-note reveal" style="--d:.1s">
+            <h3>Nog niet zeker?</h3>
+            <p>Begin met de gratis audit. Dan weet je wat je ads laten liggen, zonder verplichtingen.</p>
+            <a href="#audit" class="btn btn-ghost btn-sm">Naar de gratis audit</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ================= 7. FOOTER ================= -->
+<footer class="site-footer on-navy">
+  <div class="wrap">
+    <div class="footer-cta">
+      <h2>Benieuwd wat je ads <em>laten liggen?</em></h2>
+      <div class="btns">
+        <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan</a>
+        <a href="#intake" class="btn btn-ghost">Plan een intake</a>
+      </div>
+    </div>
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="wordmark"><span class="dot" aria-hidden="true"></span>Fieldwork Studios</a>
+        <p>Creatieve strategie voor e-commerce- en D2C-merken. Eerst onderzoek, dan creatie.</p>
+      </div>
+      <nav aria-label="Footernavigatie">
+        <h3>Navigatie</h3>
+        <ul>
+          <li><a href="#aanbod">Aanbod</a></li>
+          <li><a href="#werkwijze">Werkwijze</a></li>
+          <li><a href="#cases">Cases</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#audit">Gratis audit</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h3>Contact</h3>
+        <ul>
+          <li><a href="mailto:hallo@fieldworkstudios.nl">hallo@fieldworkstudios.nl</a></li>
+          <li><a href="https://www.linkedin.com/company/fieldwork-studios" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opent in nieuw tabblad)</span></a></li>
+          <li><a href="#intake">Plan een intake</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true">Fieldwork<span class="dot"></span></div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> Fieldwork Studios</span>
+      <ul>
+        <li><a href="#">Privacyverklaring</a></li>
+        <li><a href="#top">Terug naar boven ↑</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  root.classList.add('js');
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Header-status bij scrollen */
+  var header = document.getElementById('header');
+  function onScroll() { header.classList.toggle('scrolled', window.scrollY > 24); }
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* Mobiel menu */
+  var toggle = header.querySelector('.menu-toggle');
+  var menu = document.getElementById('mobile-nav');
+  function setMenu(open) {
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    toggle.querySelector('.i-open').style.display = open ? 'none' : '';
+    toggle.querySelector('.i-close').style.display = open ? '' : 'none';
+    menu.hidden = !open;
+  }
+  toggle.addEventListener('click', function () { setMenu(menu.hidden); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !menu.hidden) { setMenu(false); toggle.focus(); }
+  });
+
+  /* Scroll-reveal + actieve navigatie */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+    var links = document.querySelectorAll('.nav a');
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) {
+          var on = a.getAttribute('href') === '#' + en.target.id;
+          a.classList.toggle('active', on);
+          if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+        });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['aanbod', 'werkwijze', 'cases', 'audit', 'faq', 'intake'].forEach(function (id) {
+      var s = document.getElementById(id); if (s) spy.observe(s);
+    });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* Startdatum: niet in het verleden */
+  var start = document.getElementById('i-start');
+  if (start) {
+    var d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    start.min = d.toISOString().slice(0, 10);
+  }
+
+  /* Formulieren */
+  function fieldOf(el) { return el.closest('.field'); }
+  function validateField(el) {
+    var field = fieldOf(el);
+    if (!field) return true;
+    var ok = el.type === 'radio'
+      ? !!field.querySelector('input[type="radio"]:checked')
+      : el.checkValidity() && (!el.required || el.value.trim() !== '');
+    field.classList.toggle('invalid', !ok);
+    field.querySelectorAll('input, select, textarea').forEach(function (i) { i.setAttribute('aria-invalid', String(!ok)); });
+    return ok;
+  }
+
+  document.querySelectorAll('.js-form').forEach(function (form) {
+    var thanks = document.getElementById(form.id.replace('-form', '-thanks'));
+    var btn = form.querySelector('button[type="submit"]');
+    var btnHTML = btn.innerHTML;
+
+    form.addEventListener('input', function (e) {
+      var f = fieldOf(e.target);
+      if (f && f.classList.contains('invalid')) validateField(e.target);
+    });
+    form.addEventListener('change', function (e) { if (e.target.type === 'radio') validateField(e.target); });
+    form.querySelectorAll('input, select, textarea').forEach(function (el) {
+      el.addEventListener('blur', function () { if (el.value && el.type !== 'radio') validateField(el); });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var firstInvalid = null, seen = {};
+      form.querySelectorAll('[required]').forEach(function (el) {
+        if (el.type === 'radio') { if (seen[el.name]) return; seen[el.name] = true; }
+        if (!validateField(el) && !firstInvalid) firstInvalid = el;
+      });
+      if (firstInvalid) { firstInvalid.focus(); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Versturen…';
+
+      var data = new FormData(form);
+      data.append('formulier', form.id === 'audit-form' ? 'Gratis audit' : 'Intake');
+
+      // Koppel een endpoint (bijv. Formspree, Netlify Forms of eigen backend) via data-endpoint op het formulier.
+      var endpoint = form.getAttribute('data-endpoint');
+      var send = endpoint
+        ? fetch(endpoint, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+            .then(function (r) { if (!r.ok) throw new Error('Versturen mislukt'); })
+        : new Promise(function (res) { setTimeout(res, 600); });
+
+      send.then(function () {
+        var name = (data.get('naam') || '').toString().trim().split(/\s+/)[0];
+        thanks.querySelectorAll('.js-name').forEach(function (s) { s.textContent = name ? ' ' + name : ''; });
+        form.hidden = true;
+        thanks.hidden = false;
+        thanks.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        thanks.focus({ preventScroll: true });
+      }).catch(function () {
+        btn.disabled = false;
+        btn.innerHTML = btnHTML;
+        alert('Er ging iets mis bij het versturen. Probeer het opnieuw of mail ons op hallo@fieldworkstudios.nl.');
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
