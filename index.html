@@ -159,6 +159,18 @@
   .mobile-nav a.link::after { content: "→"; font: 400 20px/1 var(--font-body); }
   .mobile-nav .btn { width: 100%; margin-top: var(--s4); }
   @media (max-width: 399px) { .bar-actions .btn { display: none; } }
+  .lang { display: inline-flex; padding: 3px; border: 1px solid var(--line); border-radius: 999px; background: var(--white); }
+  .lang button {
+    min-width: 40px; min-height: 36px; padding: 0 10px; border: 0; border-radius: 999px; background: transparent;
+    font: 600 13px/1 var(--font-body); letter-spacing: .04em; color: var(--navy); cursor: pointer;
+    transition: background-color .2s var(--ease);
+  }
+  .lang button:hover { background: var(--sky-mist); }
+  .lang button[aria-pressed="true"] { background: var(--navy); color: var(--white); }
+  .bar-actions .lang { display: none; }
+  @media (min-width: 560px) { .bar-actions .lang { display: inline-flex; } }
+  .mobile-nav .lang { margin-top: var(--s4); }
+  .mobile-nav .lang button { min-width: 56px; min-height: 44px; font-size: 15px; }
   @media (min-width: 1000px) {
     .nav { display: block; }
     .menu-toggle, .mobile-nav { display: none !important; }
@@ -480,6 +492,7 @@
       </ul>
     </nav>
     <div class="bar-actions">
+      <div class="lang" role="group" aria-label="Taal / Language"><button type="button" data-lang="nl" aria-pressed="true">NL</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
       <a href="#audit" class="btn btn-primary btn-sm">Gratis audit</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="i-open" d="M4 8h16M4 16h16"/><path class="i-close" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg>
@@ -497,6 +510,7 @@
       <li><a class="link" href="#intake">Plan een intake</a></li>
     </ul>
     <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan</a>
+    <div class="lang" role="group" aria-label="Taal / Language"><button type="button" data-lang="nl" aria-pressed="true">NL</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
   </div>
 </nav>
 
@@ -1030,6 +1044,177 @@
 <script>
 (function () {
   var root = document.documentElement;
+
+  /* ---------- Taal: NL (bron in de HTML) en EN ---------- */
+  var EN = {
+    'Naar de inhoud': 'Skip to content',
+    'Aanbod': 'Services', 'Werkwijze': 'Process', 'Intake': 'Intake call',
+    'Gratis audit': 'Free audit', 'Plan een intake': 'Book an intake call',
+    'Vraag een gratis audit aan': 'Get a free audit',
+    'Creatieve strategie voor D2C-merken': 'Creative strategy for D2C brands',
+    'Ads die blijven hangen.': 'Ads that stick.', 'En verkopen.': 'And sell.',
+    'We zoeken uit waarom jouw klanten kopen en maken daar ads van die je kunt meten, testen en opschalen.': 'We find out why your customers buy, then turn that into ads you can measure, test and scale.',
+    '3 dagen': '3 days', 'tot je audit': 'until your audit', 'in je inbox': 'is in your inbox',
+    'nieuwe ads': 'new ads', 'per maand': 'per month', '2 weken': '2 weeks', 'per': 'per', 'testsprint': 'test sprint',
+    'na 2 testrondes': 'after 2 test rounds', '16 nieuwe ads in test': '16 new ads in testing',
+    'Klantonderzoek': 'Customer research', 'Testplannen': 'Test plans', 'Creatieve analyse': 'Creative analysis',
+    'Drie manieren om je ads beter te maken.': 'Three ways to make your ads better.',
+    'Los in te zetten of als één doorlopend traject. Altijd gericht op je cijfers, niet op mooie plaatjes.': 'Book them separately or as one ongoing programme. Always focused on your numbers, not on pretty pictures.',
+    'Creatieve strategie': 'Creative strategy',
+    'We onderzoeken je klanten, concurrenten en data en bepalen welke boodschap het meest oplevert.': 'We research your customers, competitors and data, and decide which message will pay off most.',
+    'Wat je krijgt': 'What you get',
+    '5–8 uitgewerkte ad-angles': '5–8 fully developed ad angles', 'Messaging per doelgroep': 'Messaging per audience', 'Testplan voor 90 dagen': '90-day test plan',
+    'Ad-creatie': 'Ad production',
+    'Video, UGC en statics voor Meta en TikTok, gemaakt om te testen en snel op te schalen.': 'Video, UGC and statics for Meta and TikTok, built to test and scale fast.',
+    '12–20 nieuwe ads per maand': '12–20 new ads per month', '3 hook-varianten per concept': '3 hook variations per concept', 'Alle formaten, klaar om te lanceren': 'Every format, ready to launch',
+    'Testen & analyse': 'Testing & analysis',
+    'Een vaste testcyclus die laat zien welke ads winnen en, belangrijker, waarom.': 'A fixed test cycle that shows which ads win and, more importantly, why.',
+    'Rapportage elke 2 weken': 'Reporting every 2 weeks', 'Bibliotheek met winnende ads': 'Library of winning ads', 'Concrete next steps per sprint': 'Concrete next steps every sprint',
+    'Eerst onderzoek, dan creatie.': 'Research first, then creative.',
+    'Vier stappen, steeds opnieuw. Elke ronde maakt de volgende beter, omdat we meten in plaats van gokken.': 'Four steps, on repeat. Every round makes the next one better, because we measure instead of guess.',
+    'Onderzoek': 'Research', 'Strategie': 'Strategy', 'Creatie': 'Creative', 'Testen': 'Testing',
+    'We lezen reviews, spreken klanten en ontleden je ads en die van je concurrenten.': 'We read reviews, talk to customers and take apart your ads and your competitors’.',
+    'We kiezen de angles met de meeste kans en leggen vast wat we gaan testen.': 'We pick the angles with the best odds and agree on what we’ll test.',
+    'We maken per angle meerdere ads, met verschillende hooks en formats.': 'We make several ads per angle, with different hooks and formats.',
+    'We meten wat werkt, schalen de winnaars op en nemen de lessen mee naar de volgende ronde.': 'We measure what works, scale the winners and carry the lessons into the next round.',
+    'Week 1': 'Week 1', 'Week 2': 'Week 2', 'Week 3': 'Week 3', 'Elke 2 weken': 'Every 2 weeks',
+    'Onze overtuiging': 'What we believe',
+    'Goede ads zijn geen geluk. Het is onderzoek': 'Great ads aren’t luck. They’re research',
+    'dat je terugziet in je cijfers.': 'you can see in your numbers.',
+    'Zo werken we bij Fieldwork Studios': 'How we work at Fieldwork Studios',
+    'Wat het oplevert.': 'What it delivers.',
+    'Resultaten van D2C-merken waar we mee werkten. Gemeten, niet geschat.': 'Results from D2C brands we’ve worked with. Measured, not estimated.',
+    'Verzorging': 'Personal care', 'Merknaam A': 'Brand A', 'Merknaam B': 'Brand B', 'Merknaam C': 'Brand C',
+    'ROAS in 90 dagen': 'ROAS in 90 days', 'kosten per aankoop': 'cost per purchase', 'meer omzet uit TikTok': 'more revenue from TikTok', '3,2×': '3.2×',
+    'Nieuwe angles op basis van 400 klantreviews maakten van een plateau weer groei.': 'New angles based on 400 customer reviews turned a plateau back into growth.',
+    'Een vaste testcyclus met 16 ads per maand vond de winnaars twee keer zo snel.': 'A fixed test cycle with 16 ads a month found the winners twice as fast.',
+    'UGC-concepten met een scherpere hook maakten van TikTok het best presterende kanaal.': 'UGC concepts with a sharper hook made TikTok the best-performing channel.',
+    'Binnen 3 werkdagen een audit van je ads in je inbox.': 'An audit of your ads in your inbox within 3 working days.',
+    'Geen verkooppraatje, wel een eerlijke blik op wat werkt, wat niet en wat je morgen kunt verbeteren.': 'No sales pitch. Just an honest look at what works, what doesn’t and what you can improve tomorrow.',
+    'Analyse van je huidige ads': 'Analysis of your current ads', 'Hooks, boodschap en formats langs de meetlat.': 'Hooks, messaging and formats, measured.',
+    'Vergelijking met 3 concurrenten': 'Comparison with 3 competitors', 'Waar laten zij kansen liggen, en waar jij?': 'Where are they missing opportunities, and where are you?',
+    '3 concrete verbeterpunten': '3 concrete improvements', 'Direct toe te passen, ook als je niet met ons verder gaat.': 'Ready to apply right away, even if you don’t continue with us.',
+    'Vraag je gratis audit aan': 'Request your free audit', 'Duurt 1 minuut': 'Takes 1 minute',
+    'Naam': 'Name', 'Vul je naam in.': 'Enter your name.', 'E-mail': 'Email', 'Vul een geldig e-mailadres in.': 'Enter a valid email address.',
+    'Merknaam en website': 'Brand name and website', 'Vul je merknaam en website in.': 'Enter your brand name and website.',
+    'Link naar je ads': 'Link to your ads', 'Meta Ad Library of je TikTok-profiel.': 'Meta Ad Library or your TikTok profile.',
+    'Vul een geldige link in, beginnend met https://': 'Enter a valid link, starting with https://',
+    'Grootste uitdaging': 'Biggest challenge', 'Groei': 'Growth', 'Positionering': 'Positioning', 'Kies je grootste uitdaging.': 'Choose your biggest challenge.',
+    'Maandelijks advertentiebudget': 'Monthly ad budget', 'Kies een range': 'Choose a range',
+    'Minder dan € 5.000': 'Less than €5,000', '€ 5.000 – € 15.000': '€5,000 – €15,000', '€ 15.000 – € 50.000': '€15,000 – €50,000',
+    '€ 50.000 – € 150.000': '€50,000 – €150,000', 'Meer dan € 150.000': 'More than €150,000', 'Kies een budget-range.': 'Choose a budget range.',
+    'Vraag mijn gratis audit aan': 'Get my free audit',
+    'Gratis en vrijblijvend. We gebruiken je gegevens alleen voor deze audit.': 'Free, no strings attached. We only use your details for this audit.',
+    'Bedankt': 'Thanks', ', je aanvraag is binnen.': ', we’ve got your request.', 'Dit gebeurt er nu:': 'Here’s what happens next:',
+    'Vandaag': 'Today', 'Je krijgt een bevestiging per e-mail.': 'You’ll get a confirmation by email.',
+    'Binnen 3 werkdagen': 'Within 3 working days', 'We analyseren je ads en sturen de audit naar je inbox.': 'We analyse your ads and send the audit to your inbox.',
+    'Daarna': 'After that', 'Wil je de punten bespreken? Plan dan een intake. Hoeft niet.': 'Want to talk it through? Book an intake call. No obligation.',
+    'Plan alvast een intake': 'Book an intake call now',
+    'Veelgestelde vragen': 'FAQ', 'Goed om te weten.': 'Good to know.',
+    'Staat je vraag er niet bij? Mail ons, dan krijg je binnen 1 werkdag antwoord.': 'Question not listed? Email us and you’ll hear back within 1 working day.',
+    'Is de audit echt gratis?': 'Is the audit really free?',
+    'Ja. Je krijgt een volledige analyse met verbeterpunten die je zelf kunt toepassen. Pas als je verder wilt, praten we over een samenwerking.': 'Yes. You get a full analysis with improvements you can apply yourself. We only talk about working together if you want to.',
+    'Voor welke merken werken jullie?': 'Which brands do you work with?',
+    'Voor e-commerce- en D2C-merken die al adverteren op Meta of TikTok en willen groeien met betere creatives. Meestal vanaf € 5.000 advertentiebudget per maand.': 'E-commerce and D2C brands already advertising on Meta or TikTok that want to grow with better creative. Usually from €5,000 in monthly ad spend.',
+    'Doen jullie ook de media buying?': 'Do you handle media buying too?',
+    'Onze focus ligt op strategie, creatie en testen. We werken nauw samen met je eigen media buyer of bureau, of brengen je in contact met partners.': 'We focus on strategy, creative and testing. We work closely with your media buyer or agency, or connect you with partners.',
+    'Hoe snel zien we resultaat?': 'How soon will we see results?',
+    'De eerste ads gaan binnen 3 weken live. Na 2 testrondes, ongeveer 6 weken, weet je welke angles werken en waar je op kunt opschalen.': 'The first ads go live within 3 weeks. After 2 test rounds, about 6 weeks, you’ll know which angles work and where to scale.',
+    'Zit ik vast aan een lang contract?': 'Am I locked into a long contract?',
+    'Nee. We starten met een traject van 3 maanden. Daarna kun je per maand verlengen of stoppen.': 'No. We start with a 3-month programme. After that you can extend or stop month by month.',
+    'Klaar om te starten? Plan een intake.': 'Ready to start? Book an intake call.',
+    'Vertel waar je staat en waar je heen wilt. Dan komen we goed voorbereid naar een gesprek van 30 minuten.': 'Tell us where you are and where you want to go, and we’ll come well prepared to a 30-minute call.',
+    'Over jou en je merk': 'About you and your brand', 'Je doelen en context': 'Your goals and context',
+    'Doel voor de komende 3 maanden': 'Goal for the next 3 months', 'Vertel kort wat je wilt bereiken.': 'Briefly describe what you want to achieve.',
+    'Wat heb je al geprobeerd?': 'What have you tried so far?', '(optioneel)': '(optional)',
+    'Doelgroep en belangrijkste producten': 'Audience and key products', 'Beschrijf kort je doelgroep en producten.': 'Briefly describe your audience and products.',
+    'Gewenste startdatum': 'Preferred start date', 'Kies een startdatum vanaf vandaag.': 'Choose a start date from today onwards.',
+    'Voorkeur voor een gespreksmoment': 'Preferred time for a call', 'Kies een moment': 'Choose a time',
+    'Ochtend (9:00 – 12:00)': 'Morning (9:00 – 12:00)', 'Middag (12:00 – 15:00)': 'Early afternoon (12:00 – 15:00)',
+    'Eind van de middag (15:00 – 17:30)': 'Late afternoon (15:00 – 17:30)', 'Maakt niet uit': 'No preference', 'Kies een moment.': 'Choose a time.',
+    'Plan mijn intake': 'Book my intake call', 'We reageren binnen 1 werkdag met een uitnodiging.': 'We’ll reply within 1 working day with an invite.',
+    'Top': 'Great', ', we hebben je intake ontvangen.': ', we’ve received your intake.',
+    'Binnen 1 werkdag': 'Within 1 working day', 'Je krijgt een agenda-uitnodiging op je gekozen moment.': 'You’ll get a calendar invite at your chosen time.',
+    'Voor het gesprek': 'Before the call', 'We bekijken je ads, site en concurrenten, zodat we niet bij nul beginnen.': 'We review your ads, site and competitors so we don’t start from zero.',
+    'In het gesprek': 'During the call', '30 minuten over je doelen, met een eerste voorstel voor de aanpak.': '30 minutes on your goals, with a first proposal for the approach.',
+    'Liever direct contact?': 'Prefer to reach out directly?', 'Mail of stuur een bericht. We reageren binnen 1 werkdag.': 'Email or send a message. We reply within 1 working day.',
+    '(opent in nieuw tabblad)': '(opens in a new tab)',
+    'Nog niet zeker?': 'Not sure yet?', 'Begin met de gratis audit. Dan weet je wat je ads laten liggen, zonder verplichtingen.': 'Start with the free audit. You’ll see what your ads are leaving on the table, with no obligation.',
+    'Naar de gratis audit': 'Go to the free audit',
+    'Benieuwd wat je ads': 'Curious what your ads', 'laten liggen?': 'are leaving on the table?',
+    'Creatieve strategie voor e-commerce- en D2C-merken. Eerst onderzoek, dan creatie.': 'Creative strategy for e-commerce and D2C brands. Research first, then creative.',
+    'Navigatie': 'Navigation', 'Privacyverklaring': 'Privacy policy', 'Terug naar boven ↑': 'Back to top ↑',
+    'Fieldwork Studios, naar boven': 'Fieldwork Studios, back to top', 'Hoofdnavigatie': 'Main navigation', 'Menu openen': 'Open menu', 'Menu sluiten': 'Close menu',
+    'Mobiele navigatie': 'Mobile navigation', 'Direct contact': 'Direct contact', 'Footernavigatie': 'Footer navigation',
+    'Een smartphone op een statief filmt een persoon voor een video-opname': 'A smartphone on a tripod films a person for a video',
+    'Team brainstormt met gekleurde sticky notes op een glazen wand': 'Team brainstorming with coloured sticky notes on a glass wall',
+    'Vrouw houdt een smartphone vast': 'Woman holding a smartphone',
+    'Grafieken met prestatiecijfers op een laptopscherm': 'Performance charts on a laptop screen',
+    'Team bespreekt samen iets op een computerscherm in een kantoor': 'Team discussing something on a computer screen in an office',
+    'Een team met laptops tijdens een werksessie': 'A team with laptops during a work session',
+    'Verschillende flesjes huidverzorging in een productfoto': 'Assorted skincare bottles in a product shot',
+    'Fles cold brew koffie': 'Bottle of cold brew coffee', 'Kledingrekken met kleding in neutrale tinten': 'Clothing racks with neutral-toned garments',
+    'Merknaam — merknaam.nl': 'Brand name — brand.com',
+    'Bijv. ROAS van 2,1 naar 3 bij gelijk budget': 'E.g. ROAS from 2.1 to 3 on the same budget',
+    'Bureaus, freelancers, formats, kanalen…': 'Agencies, freelancers, formats, channels…',
+    'Wie koopt er, en wat verkoopt het best?': 'Who buys, and what sells best?',
+    'Versturen…': 'Sending…',
+    'Er ging iets mis bij het versturen. Probeer het opnieuw of mail ons op hallo@fieldworkstudios.nl.': 'Something went wrong while sending. Please try again or email us at hallo@fieldworkstudios.nl.',
+    '__title': 'Fieldwork Studios — Creative strategy for D2C brands',
+    '__desc': 'Fieldwork Studios is a creative strategy studio for e-commerce and D2C brands. Research first, then creative. Request a free audit of your ads.'
+  };
+  var lang = 'nl';
+  function t(nl) { return lang === 'en' && EN[nl] ? EN[nl] : nl; }
+
+  var textNodes = [];
+  (function collect() {
+    var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var n;
+    while ((n = w.nextNode())) {
+      if (n.parentNode.closest('script, style')) continue;
+      var key = n.nodeValue.replace(/\s+/g, ' ').trim();
+      if (key && EN[key] !== undefined) textNodes.push({ node: n, nl: n.nodeValue, key: key });
+    }
+  })();
+  var attrNodes = [];
+  document.querySelectorAll('[placeholder], [alt], [aria-label]').forEach(function (el) {
+    ['placeholder', 'alt', 'aria-label'].forEach(function (a) {
+      var v = el.getAttribute(a);
+      if (v && EN[v] !== undefined && el.className !== 'menu-toggle') attrNodes.push({ el: el, attr: a, nl: v });
+    });
+  });
+  var meta = document.querySelector('meta[name="description"]');
+  var nlTitle = document.title, nlDesc = meta ? meta.content : '';
+
+  function setLang(next, save) {
+    lang = next === 'en' ? 'en' : 'nl';
+    root.lang = lang;
+    textNodes.forEach(function (x) {
+      if (lang === 'en') {
+        var lead = /^\s/.test(x.nl) ? ' ' : '', trail = /\s$/.test(x.nl) ? ' ' : '';
+        x.node.nodeValue = lead + EN[x.key] + trail;
+      } else {
+        x.node.nodeValue = x.nl;
+      }
+    });
+    attrNodes.forEach(function (x) { x.el.setAttribute(x.attr, lang === 'en' ? EN[x.nl] : x.nl); });
+    document.title = lang === 'en' ? EN.__title : nlTitle;
+    if (meta) meta.content = lang === 'en' ? EN.__desc : nlDesc;
+    document.querySelectorAll('.lang button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.dataset.lang === lang)); });
+    var mt = document.querySelector('.menu-toggle');
+    if (mt) mt.setAttribute('aria-label', t(mt.getAttribute('aria-expanded') === 'true' ? 'Menu sluiten' : 'Menu openen'));
+    if (save) { try { localStorage.setItem('fw-lang', lang); } catch (e) {} }
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.dataset.lang, true); });
+  });
+  var initial = 'nl';
+  try { initial = localStorage.getItem('fw-lang') || ''; } catch (e) { initial = ''; }
+  if (!initial) {
+    if (location.hash === '#en' || location.hash === '#nl') initial = location.hash.slice(1);
+    else initial = /^nl\b/i.test(navigator.language || 'nl') ? 'nl' : 'en';
+  }
+  if (initial === 'en') setLang('en', false);
   root.classList.add('js');
   document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -1044,7 +1229,7 @@
   var menu = document.getElementById('mobile-nav');
   function setMenu(open) {
     toggle.setAttribute('aria-expanded', String(open));
-    toggle.setAttribute('aria-label', open ? 'Menu sluiten' : 'Menu openen');
+    toggle.setAttribute('aria-label', open ? t('Menu sluiten') : t('Menu openen'));
     toggle.querySelector('.i-open').style.display = open ? 'none' : '';
     toggle.querySelector('.i-close').style.display = open ? '' : 'none';
     menu.hidden = !open;
@@ -1127,7 +1312,7 @@
       if (firstInvalid) { firstInvalid.focus(); return; }
 
       btn.disabled = true;
-      btn.textContent = 'Versturen…';
+      btn.textContent = t('Versturen…');
 
       var data = new FormData(form);
       data.append('formulier', form.id === 'audit-form' ? 'Gratis audit' : 'Intake');
@@ -1149,7 +1334,7 @@
       }).catch(function () {
         btn.disabled = false;
         btn.innerHTML = btnHTML;
-        alert('Er ging iets mis bij het versturen. Probeer het opnieuw of mail ons op hallo@fieldworkstudios.nl.');
+        alert(t('Er ging iets mis bij het versturen. Probeer het opnieuw of mail ons op hallo@fieldworkstudios.nl.'));
       });
     });
   });
