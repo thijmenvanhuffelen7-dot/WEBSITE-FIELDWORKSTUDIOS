@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Fieldwork Studios — Creatieve strategie voor D2C-merken</title>
 <meta name="description" content="Fieldwork Studios is een bureau voor creatieve strategie voor e-commerce- en D2C-merken. Eerst onderzoek, dan creatie. Vraag een gratis audit van je ads aan.">
-<meta name="theme-color" content="#F2F9FE">
+<meta name="theme-color" content="#FFFFFF">
 <meta property="og:title" content="Fieldwork Studios — Ads die blijven hangen. En verkopen.">
 <meta property="og:description" content="Creatieve strategie voor e-commerce- en D2C-merken. Vraag een gratis audit van je ads aan.">
 <meta property="og:type" content="website">
@@ -26,7 +26,7 @@
     --navy: #0B2545;
     --navy-2: #1A3A63;
     --muted: #3A5272;      /* 8:1 op wit, 6.9:1 op sky-soft */
-    --line: #CFE6F6;
+    --line: #D6E9F6;
     --line-strong: #8FA6C0;
     --white: #FFFFFF;
     --flare: #C2410C;      /* 5.2:1 op wit — één accent per scherm */
@@ -40,19 +40,20 @@
     --r: 16px;
     --r-lg: 24px;
     --r-xl: 32px;
-    --max: 1240px;
+    --max: 1280px;
+    --header-h: 72px;
 
     --font-head: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
     --font-body: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
     --ease: cubic-bezier(.2, .7, .2, 1);
 
-    --dots-navy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%230B2545' fill-opacity='.2'/%3E%3C/svg%3E");
-    --dots-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%23FFFFFF' fill-opacity='.55'/%3E%3C/svg%3E");
-    --dots-sky: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%2377C9F7' fill-opacity='.4'/%3E%3C/svg%3E");
+    --dots-navy: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%230B2545' fill-opacity='.22'/%3E%3C/svg%3E");
+    --dots-white: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%23FFFFFF' fill-opacity='.6'/%3E%3C/svg%3E");
+    --dots-sky: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%2377C9F7' fill-opacity='.45'/%3E%3C/svg%3E");
   }
 
   *, *::before, *::after { box-sizing: border-box; }
-  html { scroll-behavior: smooth; scroll-padding-top: 104px; -webkit-text-size-adjust: 100%; }
+  html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 24px); -webkit-text-size-adjust: 100%; }
   body {
     margin: 0; background: var(--white); color: var(--navy);
     font: 400 16px/1.6 var(--font-body);
@@ -86,16 +87,23 @@
   }
   .label::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--navy); }
   .label.on-sky { background: var(--white); }
+  .label.on-dark { background: var(--navy-2); color: var(--white); }
+  .label.on-dark::before { background: var(--sky); }
 
-  .h-xl { font-size: clamp(36px, 6.4vw, 64px); }
+  .h-xl { font-size: clamp(36px, 6vw, 64px); letter-spacing: -0.03em; }
   .lead { font-size: clamp(17px, 1.6vw, 20px); color: var(--muted); line-height: 1.55; }
 
   .sec-head { display: grid; gap: var(--s3); margin-bottom: var(--s6); }
-  .sec-head h2 { margin-top: var(--s1); }
+  .sec-head h2 { margin-top: var(--s2); }
   @media (min-width: 960px) {
     .sec-head { grid-template-columns: 1.2fr .8fr; align-items: end; gap: var(--s8); margin-bottom: var(--s8); }
     .sec-head .lead { padding-bottom: 8px; }
   }
+
+  /* ---------- Foto's ---------- */
+  .ph { position: relative; overflow: hidden; background-color: var(--sky-soft); background-image: var(--dots-navy); }
+  .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
+  .ph.noimg img { display: none; }
 
   /* ---------- Knoppen ---------- */
   .btn {
@@ -113,9 +121,7 @@
   .btn-primary:hover { background: var(--sky-hover); border-color: var(--sky-hover); }
   .btn-ghost { background: transparent; border-color: var(--navy); color: var(--navy); }
   .btn-ghost:hover { background: var(--navy); color: var(--white); }
-  .btn-navy { background: var(--navy); border-color: var(--navy); color: var(--white); }
-  .btn-navy:hover { background: var(--navy-2); border-color: var(--navy-2); }
-  .btn-sm { min-height: 44px; --pad: 10px 18px; font-size: 15px; }
+  .btn-sm { min-height: 44px; --pad: 10px 20px; font-size: 15px; }
 
   /* ---------- Woordmerk ---------- */
   .wordmark {
@@ -126,230 +132,160 @@
   .wordmark .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--sky); flex: none; }
   .on-navy .wordmark { color: var(--white); }
 
-  /* ---------- Header (zwevende pill) ---------- */
-  .site-header { position: fixed; inset: 12px 0 auto; z-index: 60; pointer-events: none; }
-  .bar {
-    pointer-events: auto;
-    display: flex; align-items: center; justify-content: space-between; gap: var(--s2);
-    height: 64px; padding: 0 8px 0 20px;
-    background: rgba(255,255,255,.92); backdrop-filter: saturate(1.4) blur(12px); -webkit-backdrop-filter: saturate(1.4) blur(12px);
-    border: 1px solid var(--line); border-radius: 999px;
-    transition: border-color .3s var(--ease), background-color .3s var(--ease);
+  /* ---------- Header ---------- */
+  .site-header {
+    position: fixed; inset: 0 0 auto; z-index: 60; height: var(--header-h);
+    background: rgba(255,255,255,.94); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    border-bottom: 1px solid transparent; transition: border-color .3s var(--ease);
   }
-  .scrolled .bar { border-color: var(--line-strong); background: rgba(255,255,255,.97); }
+  .site-header.scrolled { border-bottom-color: var(--line); }
+  .bar { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: var(--s3); }
   .nav { display: none; }
-  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 4px; }
-  .nav a {
-    display: block; padding: 10px 14px; border-radius: 999px;
-    text-decoration: none; font-weight: 500; font-size: 15px; color: var(--navy);
-    transition: background-color .2s var(--ease);
-  }
-  .nav a:hover, .nav a.active { background: var(--sky-mist); }
-  .nav a.active { box-shadow: inset 0 0 0 1px var(--line); }
+  .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: var(--s4); }
+  .nav a { position: relative; display: block; padding: 8px 0; text-decoration: none; font-weight: 500; font-size: 15px; color: var(--navy); }
+  .nav a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 2px; height: 2px; background: var(--navy); transform: scaleX(0); transform-origin: left; transition: transform .3s var(--ease); }
+  .nav a:hover::after, .nav a.active::after { transform: scaleX(1); }
   .bar-actions { display: flex; align-items: center; gap: 8px; }
   .menu-toggle {
     width: 48px; height: 48px; border-radius: 999px; border: 1px solid var(--line); background: var(--white);
     color: var(--navy); display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
   }
   .menu-toggle svg { width: 20px; height: 20px; }
-  .mobile-nav {
-    pointer-events: auto; margin-top: 8px; padding: var(--s2) var(--s3) var(--s3);
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
-  }
+  .mobile-nav { position: fixed; inset: var(--header-h) 0 0; z-index: 59; background: var(--white); padding: var(--s3) 0 var(--s5); overflow-y: auto; }
   .mobile-nav[hidden] { display: none; }
   .mobile-nav ul { list-style: none; margin: 0; padding: 0; }
-  .mobile-nav li + li { border-top: 1px solid var(--sky-soft); }
-  .mobile-nav a { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; text-decoration: none; font: 600 22px/1.2 var(--font-head); letter-spacing: -0.02em; }
-  .mobile-nav a::after { content: "→"; font-family: var(--font-body); font-weight: 400; }
-  .mobile-nav .btn { width: 100%; margin-top: var(--s2); }
-  @media (max-width: 399px) { .bar-actions .btn { display: none; } .bar { padding-left: 16px; } }
+  .mobile-nav li { border-bottom: 1px solid var(--line); }
+  .mobile-nav a.link { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; text-decoration: none; font: 600 28px/1.1 var(--font-head); letter-spacing: -0.02em; }
+  .mobile-nav a.link::after { content: "→"; font: 400 20px/1 var(--font-body); }
+  .mobile-nav .btn { width: 100%; margin-top: var(--s4); }
+  @media (max-width: 399px) { .bar-actions .btn { display: none; } }
   @media (min-width: 1000px) {
     .nav { display: block; }
     .menu-toggle, .mobile-nav { display: none !important; }
   }
 
   /* ---------- Hero ---------- */
-  .hero { position: relative; background: var(--sky-mist); padding: 128px 0 var(--s8); overflow: hidden; }
-  .hero::before {
-    content: ""; position: absolute; inset: 0; background-image: var(--dots-navy); opacity: .5; pointer-events: none;
-    -webkit-mask: linear-gradient(#000, transparent 70%); mask: linear-gradient(#000, transparent 70%);
-  }
-  .hero .wrap { position: relative; }
+  .hero { position: relative; padding: calc(var(--header-h) + var(--s5)) 0 var(--s8); overflow: hidden; }
   .hero-grid { display: grid; gap: var(--s6); align-items: center; }
-  .hero h1 { font-size: clamp(44px, 9.6vw, 84px); line-height: .98; letter-spacing: -0.035em; margin-top: var(--s3); }
-  .hero h1 .hl { position: relative; }
-  .hero h1 .nb { white-space: nowrap; }
-  @media (min-width: 640px) { .hero h1 .hl { white-space: nowrap; } }
-  @media (max-width: 639px) {
-    .hero h1 .hl::after { display: none; }
-    .hero h1 .hl { text-decoration: underline; text-decoration-color: var(--sky); text-decoration-thickness: .3em; text-underline-offset: -.18em; text-decoration-skip-ink: none; }
-  }
-  .hero h1 .hl::after {
-    content: ""; position: absolute; z-index: -1; left: -.06em; right: -.06em; bottom: .04em; height: .34em;
-    background: var(--sky); border-radius: 999px;
-  }
-  .hero h1 .hl { z-index: 0; isolation: isolate; }
-  .hero .lead { margin-top: var(--s3); max-width: 540px; }
+  .hero h1 { font-size: clamp(46px, 10vw, 96px); line-height: .97; letter-spacing: -0.04em; margin-top: var(--s3); }
+  .hero h1 .soft { color: var(--muted); }
+  .hero .lead { margin-top: var(--s3); max-width: 520px; }
   .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: var(--s5); }
   .hero .ctas .btn { flex: 1 1 240px; }
-  .proof { display: flex; align-items: center; gap: var(--s2); margin-top: var(--s5); flex-wrap: wrap; }
-  .avatars { display: flex; }
-  .avatars span {
-    width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--sky-mist);
-    display: flex; align-items: center; justify-content: center;
-    font: 600 12px/1 var(--font-head); color: var(--navy);
-  }
-  .avatars span + span { margin-left: -10px; }
-  .avatars span:nth-child(1) { background: var(--sky); }
-  .avatars span:nth-child(2) { background: var(--sky-soft); }
-  .avatars span:nth-child(3) { background: var(--navy); color: var(--white); }
-  .avatars span:nth-child(4) { background-color: var(--white); background-image: var(--dots-navy); }
-  .proof p { font-size: 14px; color: var(--muted); line-height: 1.4; }
-  .proof strong { color: var(--navy); }
+  .hero-stats { display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: var(--s3); margin: var(--s6) 0 0; padding: var(--s3) 0 0; border-top: 1px solid var(--line); list-style: none; }
+  .hero-stats li { display: grid; gap: 4px; }
+  .hero-stats b { font: 600 clamp(22px, 2.4vw, 28px)/1 var(--font-head); letter-spacing: -0.03em; }
+  .hero-stats span { font-size: 13px; color: var(--muted); line-height: 1.35; }
 
-  .hero-art { position: relative; width: 100%; max-width: 560px; margin: 0 auto; aspect-ratio: 1 / 1.02; }
-  .hero-art svg.scene { width: 100%; height: 100%; }
-  .metric {
-    position: absolute; background: var(--white); border: 1px solid var(--line); border-radius: var(--r);
-    padding: 14px 16px; min-width: 156px;
+  .hero-media { position: relative; width: 100%; max-width: 560px; margin: 0 auto; padding: 0 0 var(--s4) var(--s4); }
+  .hero-media .blob { position: absolute; border-radius: 50%; }
+  .hero-media .blob-sky { width: 78%; aspect-ratio: 1; right: -14%; top: -8%; background: var(--sky); }
+  .hero-media .blob-dots { width: 46%; aspect-ratio: 1; left: -4%; bottom: -2%; background-image: var(--dots-navy); }
+  .hero-media .ph { position: relative; aspect-ratio: 4 / 5; border-radius: var(--r-xl); }
+  .hero-media .ph img { object-position: 50% 30%; }
+  .chip-card {
+    position: absolute; z-index: 2; background: var(--white); border-radius: var(--r);
+    padding: 14px 18px; border: 1px solid var(--line);
   }
-  .metric .k { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
-  .metric .v { font: 600 30px/1.1 var(--font-head); letter-spacing: -0.03em; margin-top: 4px; }
-  .metric .d { font-size: 13px; color: var(--muted); margin-top: 2px; }
-  .metric .bars { display: flex; gap: 4px; align-items: flex-end; height: 28px; margin-top: 10px; }
-  .metric .bars i { flex: 1; border-radius: 3px; background: var(--sky-soft); }
-  .metric .bars i.on { background: var(--sky); }
-  .metric-a { left: 0; top: 10%; }
-  .metric-a .v { color: var(--flare); }
-  .metric-b { right: 0; bottom: 6%; }
-  .metric-b .row { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 500; }
-  .metric-b .row + .row { margin-top: 6px; }
-  .metric-b .row b { width: 8px; height: 8px; border-radius: 50%; background: var(--sky); flex: none; }
-  .metric-b .row b.n { background: var(--navy); }
+  .chip-card .k { font-size: 12px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+  .chip-card .v { font: 600 32px/1.05 var(--font-head); letter-spacing: -0.03em; margin-top: 4px; color: var(--flare); }
+  .chip-card .d { font-size: 13px; color: var(--muted); }
+  .chip-a { left: 0; bottom: 0; }
+  .chip-b { right: 16px; top: 24px; display: flex; align-items: center; gap: 10px; padding: 10px 16px 10px 10px; border-radius: 999px; font-weight: 600; font-size: 14px; }
+  .chip-b .live { width: 28px; height: 28px; border-radius: 50%; background: var(--sky-soft); display: grid; place-items: center; }
+  .chip-b .live::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--navy); animation: pulse 2s var(--ease) infinite; }
+  @keyframes pulse { 50% { transform: scale(.6); } }
   .float { animation: float 7s var(--ease) infinite alternate; }
   .float.d2 { animation-delay: -3.5s; }
   @keyframes float { from { transform: translateY(-6px); } to { transform: translateY(6px); } }
 
   @media (min-width: 1000px) {
-    .hero { padding: 168px 0 var(--s12); }
-    .hero-grid { grid-template-columns: 1.25fr .75fr; gap: var(--s6); }
+    .hero { padding: calc(var(--header-h) + var(--s10)) 0 var(--s12); }
+    .hero-grid { grid-template-columns: 1.15fr .85fr; gap: var(--s10); }
     .hero .ctas .btn { flex: 0 0 auto; }
   }
 
   /* ---------- Marquee ---------- */
-  .marquee { background: var(--white); border-block: 1px solid var(--line); overflow: hidden; padding: 20px 0; }
-  .marquee-track { display: flex; width: max-content; animation: scroll 40s linear infinite; }
-  .marquee:hover .marquee-track { animation-play-state: paused; }
+  .marquee { background: var(--navy); overflow: hidden; padding: 22px 0; }
+  .marquee-track { display: flex; width: max-content; animation: scroll 45s linear infinite; }
   .marquee ul { display: flex; list-style: none; margin: 0; padding: 0; }
-  .marquee li { display: flex; align-items: center; gap: 28px; padding-right: 28px; font: 600 clamp(20px, 2.4vw, 28px)/1 var(--font-head); letter-spacing: -0.02em; white-space: nowrap; }
+  .marquee li { display: flex; align-items: center; gap: 32px; padding-right: 32px; font: 600 clamp(20px, 2.2vw, 26px)/1 var(--font-head); letter-spacing: -0.02em; white-space: nowrap; color: var(--white); }
   .marquee li::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--sky); }
   @keyframes scroll { to { transform: translateX(-50%); } }
 
-  /* ---------- Kerncijfers ---------- */
-  .facts { padding: var(--s10) 0; }
-  .facts-grid { display: grid; gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; }
-  @media (min-width: 640px) { .facts-grid { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) { .facts-grid { grid-template-columns: repeat(4, 1fr); } }
-  .fact { background: var(--white); padding: var(--s4) var(--s3); }
-  .fact .n { font: 600 clamp(40px, 5vw, 56px)/1 var(--font-head); letter-spacing: -0.035em; }
-  .fact .n small { font-size: .45em; letter-spacing: -0.01em; margin-left: 4px; }
-  .fact p { margin-top: 12px; color: var(--muted); font-size: 15px; max-width: 220px; }
-
   /* ---------- Aanbod ---------- */
-  .services { display: grid; gap: var(--s2); }
-  @media (min-width: 900px) { .services { grid-template-columns: repeat(3, 1fr); gap: var(--s3); } }
+  .services { display: grid; gap: var(--s3); }
+  @media (min-width: 900px) { .services { grid-template-columns: repeat(3, 1fr); } }
   .service {
-    position: relative; display: flex; flex-direction: column;
-    background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg);
-    padding: var(--s4); overflow: hidden;
-    transition: border-color .3s var(--ease), transform .3s var(--ease);
+    display: flex; flex-direction: column; background: var(--white);
+    border: 1px solid var(--line); border-radius: var(--r-lg); padding: 8px; overflow: hidden;
+    transition: border-color .3s var(--ease);
   }
-  .service:hover { border-color: var(--navy); transform: translateY(-4px); }
-  .service .top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--s6); }
-  .service .idx { font: 600 14px/1 var(--font-head); color: var(--muted); letter-spacing: 0; }
-  .service .orb { position: relative; width: 72px; height: 72px; }
-  .service .orb::before { content: ""; position: absolute; inset: 0; border-radius: 50%; background: var(--sky-soft); background-image: var(--dots-navy); }
-  .service .orb::after { content: ""; position: absolute; width: 36px; height: 36px; right: 0; bottom: 0; border-radius: 50%; background: var(--sky); transition: transform .4s var(--ease); }
-  .service:nth-child(2) .orb::after { left: 0; top: 0; right: auto; bottom: auto; }
-  .service:nth-child(3) .orb::after { background: var(--navy); width: 24px; height: 24px; left: 24px; top: 24px; }
-  .service:hover .orb::after { transform: scale(1.15); }
-  .service h3 { font-size: 28px; }
-  .service > p { color: var(--muted); margin-top: 12px; }
-  .gets { margin-top: auto; padding-top: var(--s4); }
-  .gets h4 { font: 600 12px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: var(--s3); border-top: 1px solid var(--sky-soft); margin-bottom: 14px; }
+  .service:hover { border-color: var(--navy); }
+  .service:hover .ph img { transform: scale(1.04); }
+  .service .ph { aspect-ratio: 4 / 3; border-radius: calc(var(--r-lg) - 6px); }
+  .service .ph .idx {
+    position: absolute; left: 12px; top: 12px; z-index: 1;
+    font: 600 13px/1 var(--font-head); background: var(--white); padding: 8px 12px; border-radius: 999px;
+  }
+  .service-body { display: flex; flex-direction: column; flex: 1; padding: var(--s3) var(--s2) var(--s2); }
+  .service h3 { font-size: 26px; }
+  .service-body > p { color: var(--muted); margin-top: 10px; }
+  .gets { margin-top: auto; padding-top: var(--s3); }
+  .gets h4 { font: 600 12px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: var(--s3); border-top: 1px solid var(--line); margin-bottom: 14px; }
   .gets ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .gets li { display: flex; gap: 12px; align-items: flex-start; font-weight: 500; }
-  .gets li svg { width: 20px; height: 20px; flex: none; margin-top: 2px; }
+  .gets li::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: 9px; border-radius: 50%; background: var(--sky); box-shadow: 0 0 0 4px var(--sky-soft); }
 
   /* ---------- Werkwijze ---------- */
-  .process { position: relative; background: var(--sky); overflow: hidden; }
-  .process::before {
-    content: ""; position: absolute; width: 560px; height: 560px; right: -200px; top: -220px;
-    border-radius: 50%; background: var(--white); opacity: .22;
-  }
-  .process::after {
-    content: ""; position: absolute; width: 420px; height: 420px; left: -160px; bottom: -220px;
-    border-radius: 50%; background-image: var(--dots-navy);
-  }
+  .process { background: var(--sky); position: relative; overflow: hidden; }
+  .process::after { content: ""; position: absolute; width: 480px; height: 480px; right: -180px; top: -200px; border-radius: 50%; background-image: var(--dots-navy); }
   .process .wrap { position: relative; z-index: 1; }
-  .process .lead { color: var(--navy); }
-  .timeline { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); position: relative; counter-reset: s; }
-  @media (min-width: 640px) { .timeline { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1000px) {
-    .timeline { grid-template-columns: repeat(4, 1fr); gap: var(--s3); padding-top: var(--s7); }
-    .timeline::before {
-      content: ""; position: absolute; left: 12px; right: 12px; top: 11px; height: 2px;
-      background-image: repeating-linear-gradient(90deg, var(--navy) 0 6px, transparent 6px 14px);
-      opacity: .5;
-    }
-    .step::before {
-      content: ""; position: absolute; top: calc(-1 * var(--s7)); left: 0; width: 24px; height: 24px;
-      border-radius: 50%; background: var(--white); border: 3px solid var(--navy);
-    }
-    .step:last-child::before { background: var(--navy); }
-  }
-  .step { position: relative; background: var(--white); border-radius: var(--r-lg); padding: var(--s4) var(--s3); counter-increment: s; }
-  .step .num { font: 600 64px/1 var(--font-head); letter-spacing: -0.04em; color: var(--sky-soft); -webkit-text-stroke: 1.5px var(--navy); }
+  .process-grid { display: grid; gap: var(--s6); }
+  @media (min-width: 1000px) { .process-grid { grid-template-columns: .9fr 1.1fr; gap: var(--s10); align-items: start; } .process-intro { position: sticky; top: 120px; } }
+  .process-intro h2 { margin-top: var(--s2); }
+  .process-intro .lead { color: var(--navy); margin-top: var(--s3); max-width: 440px; }
+  .process-intro .ph { margin-top: var(--s5); aspect-ratio: 5 / 4; border-radius: var(--r-xl); }
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; border-top: 2px solid var(--navy); }
+  .step { display: grid; grid-template-columns: 64px 1fr; gap: var(--s2); padding: var(--s4) 0; border-bottom: 1px solid rgba(11,37,69,.35); counter-increment: s; }
+  @media (min-width: 640px) { .step { grid-template-columns: 112px 1fr auto; gap: var(--s3); } }
+  .step .num { font: 600 clamp(40px, 5vw, 56px)/.9 var(--font-head); letter-spacing: -0.04em; }
   .step .num::before { content: "0" counter(s); }
-  .step h3 { font-size: 26px; margin-top: var(--s3); }
-  .step p { color: var(--muted); margin-top: 8px; }
-  .step .when { display: inline-block; margin-top: var(--s3); font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--sky-mist); border: 1px solid var(--line); }
+  .step h3 { font-size: clamp(24px, 2.6vw, 32px); }
+  .step p { margin-top: 8px; max-width: 440px; }
+  .step .when { grid-column: 2; justify-self: start; font-size: 13px; font-weight: 600; padding: 6px 12px; border-radius: 999px; background: var(--white); white-space: nowrap; }
+  @media (min-width: 640px) { .step .when { grid-column: 3; grid-row: 1; align-self: start; } }
 
   /* ---------- Statement ---------- */
   .statement { position: relative; background: var(--navy); overflow: hidden; }
-  .statement .orb-1 { position: absolute; width: 380px; height: 380px; border-radius: 50%; right: -120px; bottom: -180px; background-image: var(--dots-sky); }
-  .statement .orb-2 { position: absolute; width: 120px; height: 120px; border-radius: 50%; right: 6%; top: 56px; background: var(--sky); }
-  @media (max-width: 1099px) { .statement .orb-2 { width: 48px; height: 48px; top: 24px; right: 16px; } }
-  .statement .wrap { position: relative; }
-  .statement blockquote { margin: 0; max-width: 860px; }
-  .statement blockquote p { font: 600 clamp(32px, 6vw, 64px)/1.06 var(--font-head); letter-spacing: -0.03em; color: var(--white); }
+  .statement-grid { display: grid; gap: var(--s6); align-items: center; }
+  @media (min-width: 1000px) { .statement-grid { grid-template-columns: 1.3fr .7fr; gap: var(--s10); } }
+  .statement blockquote { margin: 0; }
+  .statement blockquote p { font: 600 clamp(32px, 5.4vw, 60px)/1.06 var(--font-head); letter-spacing: -0.03em; color: var(--white); margin-top: var(--s3); }
   .statement blockquote p em { font-style: normal; color: var(--sky); }
   .statement .sig { display: flex; align-items: center; gap: 12px; margin-top: var(--s5); color: var(--on-navy-muted); }
   .statement .sig::before { content: ""; width: 40px; height: 2px; background: var(--sky); }
+  .round-photo { position: relative; width: min(72%, 420px); aspect-ratio: 1; margin: 0 auto; }
+  @media (min-width: 1000px) { .round-photo { width: min(100%, 420px); } }
+  .round-photo::before { content: ""; position: absolute; inset: -6% -6% auto auto; width: 48%; aspect-ratio: 1; border-radius: 50%; background: var(--sky); }
+  .round-photo::after { content: ""; position: absolute; left: -10%; bottom: -10%; width: 60%; aspect-ratio: 1; border-radius: 50%; background-image: var(--dots-sky); }
+  .round-photo .ph { position: relative; z-index: 1; width: 100%; height: 100%; border-radius: 50%; background-color: var(--navy-2); }
 
   /* ---------- Cases ---------- */
   .cases { background: var(--sky-mist); }
-  .case-grid { display: grid; gap: var(--s2); }
-  @media (min-width: 900px) { .case-grid { grid-template-columns: repeat(3, 1fr); gap: var(--s3); } }
-  .case { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; display: flex; flex-direction: column; transition: border-color .3s var(--ease); }
+  .case-grid { display: grid; gap: var(--s3); }
+  @media (min-width: 900px) { .case-grid { grid-template-columns: repeat(3, 1fr); } }
+  .case { background: var(--white); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 8px; display: flex; flex-direction: column; transition: border-color .3s var(--ease); }
   .case:hover { border-color: var(--navy); }
-  .case-visual { position: relative; height: 180px; background: var(--sky-soft); overflow: hidden; }
-  .case-visual::before { content: ""; position: absolute; inset: 0; background-image: var(--dots-navy); }
-  .case-visual .c1, .case-visual .c2 { position: absolute; border-radius: 50%; transition: transform .6s var(--ease); }
-  .case:nth-child(1) .c1 { width: 200px; height: 200px; background: var(--sky); right: -40px; top: -40px; }
-  .case:nth-child(1) .c2 { width: 64px; height: 64px; background: var(--navy); left: 32px; bottom: 32px; }
-  .case:nth-child(2) .c1 { width: 240px; height: 240px; background: var(--sky); left: -60px; bottom: -120px; }
-  .case:nth-child(2) .c2 { width: 40px; height: 40px; background: var(--navy); right: 48px; top: 40px; }
-  .case:nth-child(3) .c1 { width: 160px; height: 160px; background: var(--white); right: 40px; bottom: -48px; }
-  .case:nth-child(3) .c2 { width: 88px; height: 88px; background: var(--sky); left: 40px; top: 32px; }
-  .case:hover .c1 { transform: scale(1.06); }
-  .case-visual .tag { position: absolute; left: 16px; top: 16px; z-index: 1; }
-  .tag { display: inline-block; font-size: 13px; font-weight: 600; color: var(--navy); background: var(--white); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); }
-  .case-body { padding: var(--s4) var(--s3); display: flex; flex-direction: column; flex: 1; }
+  .case:hover .ph img { transform: scale(1.04); }
+  .case .ph { aspect-ratio: 4 / 3; border-radius: calc(var(--r-lg) - 6px); }
+  .case .ph .tag { position: absolute; left: 12px; top: 12px; z-index: 1; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; color: var(--navy); background: var(--white); padding: 6px 12px; border-radius: 999px; }
+  .case-body { padding: var(--s3) var(--s2) var(--s2); display: flex; flex-direction: column; flex: 1; }
   .case .brand { font-size: 20px; }
-  .case .figure { font: 600 clamp(64px, 8vw, 88px)/1 var(--font-head); letter-spacing: -0.045em; color: var(--flare); margin-top: var(--s3); }
+  .case .figure { font: 600 clamp(64px, 7vw, 84px)/1 var(--font-head); letter-spacing: -0.045em; color: var(--flare); margin-top: var(--s3); }
   .case .figure-label { font-weight: 600; margin-top: 8px; }
-  .case .summary { color: var(--muted); margin-top: var(--s2); padding-top: var(--s2); border-top: 1px solid var(--sky-soft); }
+  .case .summary { color: var(--muted); margin-top: var(--s2); padding-top: var(--s2); border-top: 1px solid var(--line); }
 
   /* ---------- Formulieren ---------- */
   .audit { position: relative; }
@@ -528,39 +464,41 @@
 <body>
 <a class="skip" href="#main">Naar de inhoud</a>
 
+<!-- Foto's: Unsplash (Unsplash License). Tip: download ze naar /images en verwijs lokaal voor de snelste laadtijd. -->
+
 <!-- ================= HEADER ================= -->
 <header class="site-header" id="header">
-  <div class="wrap">
-    <div class="bar">
-      <a href="#top" class="wordmark" aria-label="Fieldwork Studios, naar boven"><span class="dot" aria-hidden="true"></span>Fieldwork Studios</a>
-      <nav class="nav" aria-label="Hoofdnavigatie">
-        <ul>
-          <li><a href="#aanbod">Aanbod</a></li>
-          <li><a href="#werkwijze">Werkwijze</a></li>
-          <li><a href="#cases">Cases</a></li>
-          <li><a href="#faq">FAQ</a></li>
-          <li><a href="#intake">Intake</a></li>
-        </ul>
-      </nav>
-      <div class="bar-actions">
-        <a href="#audit" class="btn btn-primary btn-sm">Gratis audit</a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="i-open" d="M4 8h16M4 16h16"/><path class="i-close" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg>
-        </button>
-      </div>
-    </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie" hidden>
+  <div class="wrap bar">
+    <a href="#top" class="wordmark" aria-label="Fieldwork Studios, naar boven"><span class="dot" aria-hidden="true"></span>Fieldwork Studios</a>
+    <nav class="nav" aria-label="Hoofdnavigatie">
       <ul>
         <li><a href="#aanbod">Aanbod</a></li>
         <li><a href="#werkwijze">Werkwijze</a></li>
         <li><a href="#cases">Cases</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="#intake">Plan een intake</a></li>
+        <li><a href="#intake">Intake</a></li>
       </ul>
-      <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan</a>
     </nav>
+    <div class="bar-actions">
+      <a href="#audit" class="btn btn-primary btn-sm">Gratis audit</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path class="i-open" d="M4 8h16M4 16h16"/><path class="i-close" d="M6 6l12 12M18 6L6 18" style="display:none"/></svg>
+      </button>
+    </div>
   </div>
 </header>
+<nav id="mobile-nav" class="mobile-nav" aria-label="Mobiele navigatie" hidden>
+  <div class="wrap">
+    <ul>
+      <li><a class="link" href="#aanbod">Aanbod</a></li>
+      <li><a class="link" href="#werkwijze">Werkwijze</a></li>
+      <li><a class="link" href="#cases">Cases</a></li>
+      <li><a class="link" href="#faq">FAQ</a></li>
+      <li><a class="link" href="#intake">Plan een intake</a></li>
+    </ul>
+    <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan</a>
+  </div>
+</nav>
 
 <main id="main">
 
@@ -569,54 +507,32 @@
     <div class="wrap hero-grid">
       <div>
         <span class="label reveal">Creatieve strategie voor D2C-merken</span>
-        <h1 id="hero-title" class="reveal" style="--d:.08s">Ads die <span class="hl">blijven hangen.</span> <span class="nb">En verkopen.</span></h1>
+        <h1 id="hero-title" class="reveal" style="--d:.08s">Ads die blijven hangen. <span class="soft">En verkopen.</span></h1>
         <p class="lead reveal" style="--d:.16s">We zoeken uit waarom jouw klanten kopen en maken daar ads van die je kunt meten, testen en opschalen.</p>
         <div class="ctas reveal" style="--d:.24s">
           <a href="#audit" class="btn btn-primary">Vraag een gratis audit aan
             <svg class="arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
           <a href="#intake" class="btn btn-ghost">Plan een intake</a>
         </div>
-        <div class="proof reveal" style="--d:.32s">
-          <div class="avatars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
-          <p><strong>Audit binnen 3 werkdagen.</strong><br>Gratis, zonder verplichtingen.</p>
-        </div>
+        <ul class="hero-stats reveal" style="--d:.32s">
+          <li><b>3 dagen</b><span>tot je audit<br>in je inbox</span></li>
+          <li><b>12–20</b><span>nieuwe ads<br>per maand</span></li>
+          <li><b>2 weken</b><span>per<br>testsprint</span></li>
+        </ul>
       </div>
 
-      <div class="hero-art reveal" style="--d:.2s" aria-hidden="true">
-        <svg class="scene" viewBox="0 0 560 572" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <pattern id="pd" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#FFFFFF" fill-opacity=".6"/></pattern>
-            <pattern id="pn" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.5" fill="#0B2545" fill-opacity=".25"/></pattern>
-            <clipPath id="cb"><circle cx="320" cy="250" r="210"/></clipPath>
-            <clipPath id="cs"><circle cx="150" cy="420" r="120"/></clipPath>
-          </defs>
-          <circle cx="320" cy="250" r="210" fill="#77C9F7"/>
-          <rect x="100" y="30" width="440" height="440" fill="url(#pd)" clip-path="url(#cb)"/>
-          <circle cx="150" cy="420" r="120" fill="#DDF0FD"/>
-          <rect x="20" y="290" width="260" height="260" fill="url(#pn)" clip-path="url(#cs)"/>
-          <circle cx="470" cy="500" r="44" fill="#0B2545"/>
-          <!-- plot -->
-          <path d="M60 470 H520" stroke="#0B2545" stroke-opacity=".3" stroke-width="2" stroke-dasharray="4 8"/>
-          <polyline points="80,430 150,380 210,400 270,320 340,290 410,200 470,150" fill="none" stroke="#0B2545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-          <g fill="#FFFFFF" stroke="#0B2545" stroke-width="3">
-            <circle cx="80" cy="430" r="7"/><circle cx="150" cy="380" r="7"/><circle cx="210" cy="400" r="7"/>
-            <circle cx="270" cy="320" r="7"/><circle cx="340" cy="290" r="7"/><circle cx="410" cy="200" r="7"/>
-          </g>
-          <circle cx="470" cy="150" r="16" fill="#0B2545" fill-opacity=".15"/>
-          <circle cx="470" cy="150" r="9" fill="#0B2545"/>
-        </svg>
-        <div class="metric metric-a float">
+      <div class="hero-media reveal" style="--d:.2s">
+        <span class="blob blob-sky" aria-hidden="true"></span>
+        <span class="blob blob-dots" aria-hidden="true"></span>
+        <div class="ph">
+          <img src="https://unsplash.com/photos/RtHTiKnZ_tk/download?w=1200" alt="Een smartphone op een statief filmt een persoon voor een video-opname" width="1200" height="1500" fetchpriority="high" onerror="this.parentNode.classList.add('noimg')">
+        </div>
+        <div class="chip-card chip-a float" aria-hidden="true">
           <div class="k">Hook rate</div>
-          <div class="v">38%</div>
+          <div class="v">+38%</div>
           <div class="d">na 2 testrondes</div>
-          <div class="bars"><i style="height:30%"></i><i style="height:45%"></i><i style="height:40%"></i><i class="on" style="height:70%"></i><i class="on" style="height:100%"></i></div>
         </div>
-        <div class="metric metric-b float d2">
-          <div class="k" style="margin-bottom:8px">Deze sprint</div>
-          <div class="row"><b></b>16 nieuwe ads</div>
-          <div class="row"><b></b>4 angles getest</div>
-          <div class="row"><b class="n"></b>2 winnaars</div>
-        </div>
+        <div class="chip-card chip-b float d2" aria-hidden="true"><span class="live"></span>16 nieuwe ads in test</div>
       </div>
     </div>
   </section>
@@ -629,20 +545,8 @@
     </div>
   </div>
 
-  <!-- ================= KERNCIJFERS ================= -->
-  <div class="facts">
-    <div class="wrap">
-      <div class="facts-grid">
-        <div class="fact reveal"><div class="n">3<small>dagen</small></div><p>tot je gratis audit in je inbox staat.</p></div>
-        <div class="fact reveal" style="--d:.08s"><div class="n">12–20</div><p>nieuwe ads per maand, klaar om te testen.</p></div>
-        <div class="fact reveal" style="--d:.16s"><div class="n">2<small>weken</small></div><p>per testsprint, met een heldere rapportage.</p></div>
-        <div class="fact reveal" style="--d:.24s"><div class="n">1</div><p>vast aanspreekpunt. Geen accountmanagers ertussen.</p></div>
-      </div>
-    </div>
-  </div>
-
   <!-- ================= 2. AANBOD ================= -->
-  <section id="aanbod" aria-labelledby="aanbod-title" style="padding-top:0">
+  <section id="aanbod" aria-labelledby="aanbod-title">
     <div class="wrap">
       <div class="sec-head">
         <div>
@@ -653,42 +557,57 @@
       </div>
       <div class="services">
         <article class="service reveal">
-          <div class="top"><span class="idx">01</span><span class="orb" aria-hidden="true"></span></div>
-          <h3>Creatieve strategie</h3>
-          <p>We onderzoeken je klanten, concurrenten en data en bepalen welke boodschap het meest oplevert.</p>
-          <div class="gets">
-            <h4>Wat je krijgt</h4>
-            <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>5–8 uitgewerkte ad-angles</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Messaging per doelgroep</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Testplan voor 90 dagen</li>
-            </ul>
+          <div class="ph">
+            <span class="idx">01</span>
+            <img src="https://unsplash.com/photos/euNzbqwIIUI/download?w=900" alt="Team brainstormt met gekleurde sticky notes op een glazen wand" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
+          <div class="service-body">
+            <h3>Creatieve strategie</h3>
+            <p>We onderzoeken je klanten, concurrenten en data en bepalen welke boodschap het meest oplevert.</p>
+            <div class="gets">
+              <h4>Wat je krijgt</h4>
+              <ul>
+                <li>5–8 uitgewerkte ad-angles</li>
+                <li>Messaging per doelgroep</li>
+                <li>Testplan voor 90 dagen</li>
+              </ul>
+            </div>
           </div>
         </article>
         <article class="service reveal" style="--d:.1s">
-          <div class="top"><span class="idx">02</span><span class="orb" aria-hidden="true"></span></div>
-          <h3>Ad-creatie</h3>
-          <p>Video, UGC en statics voor Meta en TikTok, gemaakt om te testen en snel op te schalen.</p>
-          <div class="gets">
-            <h4>Wat je krijgt</h4>
-            <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>12–20 nieuwe ads per maand</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>3 hook-varianten per concept</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alle formaten, klaar om te lanceren</li>
-            </ul>
+          <div class="ph">
+            <span class="idx">02</span>
+            <img src="https://unsplash.com/photos/TdeCF3XmDWg/download?w=900" alt="Vrouw houdt een smartphone vast" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
+          <div class="service-body">
+            <h3>Ad-creatie</h3>
+            <p>Video, UGC en statics voor Meta en TikTok, gemaakt om te testen en snel op te schalen.</p>
+            <div class="gets">
+              <h4>Wat je krijgt</h4>
+              <ul>
+                <li>12–20 nieuwe ads per maand</li>
+                <li>3 hook-varianten per concept</li>
+                <li>Alle formaten, klaar om te lanceren</li>
+              </ul>
+            </div>
           </div>
         </article>
         <article class="service reveal" style="--d:.2s">
-          <div class="top"><span class="idx">03</span><span class="orb" aria-hidden="true"></span></div>
-          <h3>Testen &amp; analyse</h3>
-          <p>Een vaste testcyclus die laat zien welke ads winnen en, belangrijker, waarom.</p>
-          <div class="gets">
-            <h4>Wat je krijgt</h4>
-            <ul>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Rapportage elke 2 weken</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Bibliotheek met winnende ads</li>
-              <li><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="10" fill="#DDF0FD"/><path d="M6 10.5l2.5 2.5 5.5-6" fill="none" stroke="#0B2545" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Concrete next steps per sprint</li>
-            </ul>
+          <div class="ph">
+            <span class="idx">03</span>
+            <img src="https://unsplash.com/photos/JKUTrJ4vK00/download?w=900" alt="Grafieken met prestatiecijfers op een laptopscherm" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
+          <div class="service-body">
+            <h3>Testen &amp; analyse</h3>
+            <p>Een vaste testcyclus die laat zien welke ads winnen en, belangrijker, waarom.</p>
+            <div class="gets">
+              <h4>Wat je krijgt</h4>
+              <ul>
+                <li>Rapportage elke 2 weken</li>
+                <li>Bibliotheek met winnende ads</li>
+                <li>Concrete next steps per sprint</li>
+              </ul>
+            </div>
           </div>
         </article>
       </div>
@@ -697,37 +616,34 @@
 
   <!-- ================= 3. WERKWIJZE ================= -->
   <section id="werkwijze" class="process" aria-labelledby="werkwijze-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <div>
-          <span class="label on-sky reveal">Werkwijze</span>
-          <h2 id="werkwijze-title" class="h-xl reveal">Eerst onderzoek, dan creatie.</h2>
-        </div>
+    <div class="wrap process-grid">
+      <div class="process-intro">
+        <span class="label on-sky reveal">Werkwijze</span>
+        <h2 id="werkwijze-title" class="h-xl reveal">Eerst onderzoek, dan creatie.</h2>
         <p class="lead reveal">Vier stappen, steeds opnieuw. Elke ronde maakt de volgende beter, omdat we meten in plaats van gokken.</p>
+        <div class="ph reveal">
+          <img src="https://unsplash.com/photos/UikYLDQj9_I/download?w=1000" alt="Team bespreekt samen iets op een computerscherm in een kantoor" loading="lazy" decoding="async" width="1000" height="800" onerror="this.parentNode.classList.add('noimg')">
+        </div>
       </div>
-      <ol class="timeline">
+      <ol class="steps">
         <li class="step reveal">
           <div class="num" aria-hidden="true"></div>
-          <h3>Onderzoek</h3>
-          <p>We lezen reviews, spreken klanten en ontleden je ads en die van je concurrenten.</p>
+          <div><h3>Onderzoek</h3><p>We lezen reviews, spreken klanten en ontleden je ads en die van je concurrenten.</p></div>
           <span class="when">Week 1</span>
         </li>
-        <li class="step reveal" style="--d:.1s">
+        <li class="step reveal">
           <div class="num" aria-hidden="true"></div>
-          <h3>Strategie</h3>
-          <p>We kiezen de angles met de meeste kans en leggen vast wat we gaan testen.</p>
+          <div><h3>Strategie</h3><p>We kiezen de angles met de meeste kans en leggen vast wat we gaan testen.</p></div>
           <span class="when">Week 2</span>
         </li>
-        <li class="step reveal" style="--d:.2s">
+        <li class="step reveal">
           <div class="num" aria-hidden="true"></div>
-          <h3>Creatie</h3>
-          <p>We maken per angle meerdere ads, met verschillende hooks en formats.</p>
+          <div><h3>Creatie</h3><p>We maken per angle meerdere ads, met verschillende hooks en formats.</p></div>
           <span class="when">Week 3</span>
         </li>
-        <li class="step reveal" style="--d:.3s">
+        <li class="step reveal">
           <div class="num" aria-hidden="true"></div>
-          <h3>Testen</h3>
-          <p>We meten wat werkt, schalen de winnaars op en nemen de lessen mee naar de volgende ronde.</p>
+          <div><h3>Testen</h3><p>We meten wat werkt, schalen de winnaars op en nemen de lessen mee naar de volgende ronde.</p></div>
           <span class="when">Elke 2 weken</span>
         </li>
       </ol>
@@ -736,18 +652,22 @@
 
   <!-- ================= STATEMENT ================= -->
   <section class="statement on-navy" aria-label="Onze overtuiging">
-    <span class="orb-1" aria-hidden="true"></span>
-    <span class="orb-2" aria-hidden="true"></span>
-    <div class="wrap">
+    <div class="wrap statement-grid">
       <blockquote class="reveal">
+        <span class="label on-dark">Onze overtuiging</span>
         <p>Goede ads zijn geen geluk. Het is onderzoek <em>dat je terugziet in je cijfers.</em></p>
-        <p class="sig" style="font:500 16px/1.4 var(--font-body);letter-spacing:0;color:var(--on-navy-muted)">Zo werken we bij Fieldwork Studios</p>
+        <footer class="sig">Zo werken we bij Fieldwork Studios</footer>
       </blockquote>
+      <div class="round-photo reveal" style="--d:.1s">
+        <div class="ph">
+          <img src="https://unsplash.com/photos/Hh-PIe3qIug/download?w=900" alt="Een team met laptops tijdens een werksessie" loading="lazy" decoding="async" width="900" height="900" onerror="this.parentNode.classList.add('noimg')">
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ================= 4. CASES ================= -->
-  <!-- PLACEHOLDER: vervang merknamen, categorieën en cijfers door echte, goedgekeurde cases. -->
+  <!-- PLACEHOLDER: vervang merknamen, categorieën, cijfers en foto's door echte, goedgekeurde cases. -->
   <section id="cases" class="cases" aria-labelledby="cases-title">
     <div class="wrap">
       <div class="sec-head">
@@ -759,33 +679,36 @@
       </div>
       <div class="case-grid">
         <article class="case reveal">
-          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="ph">
+            <span class="tag">Verzorging</span>
+            <img src="https://unsplash.com/photos/BKlMCsx6Lmc/download?w=900" alt="Verschillende flesjes huidverzorging in een productfoto" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
           <div class="case-body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-              <h3 class="brand">Merknaam A</h3><span class="tag">Verzorging</span>
-            </div>
+            <h3 class="brand">Merknaam A</h3>
             <p class="figure">+68%</p>
             <p class="figure-label">ROAS in 90 dagen</p>
             <p class="summary">Nieuwe angles op basis van 400 klantreviews maakten van een plateau weer groei.</p>
           </div>
         </article>
         <article class="case reveal" style="--d:.1s">
-          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="ph">
+            <span class="tag">Food &amp; drinks</span>
+            <img src="https://unsplash.com/photos/RhZR_yzXtFI/download?w=900" alt="Fles cold brew koffie" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
           <div class="case-body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-              <h3 class="brand">Merknaam B</h3><span class="tag">Food &amp; drinks</span>
-            </div>
+            <h3 class="brand">Merknaam B</h3>
             <p class="figure">−41%</p>
             <p class="figure-label">kosten per aankoop</p>
             <p class="summary">Een vaste testcyclus met 16 ads per maand vond de winnaars twee keer zo snel.</p>
           </div>
         </article>
         <article class="case reveal" style="--d:.2s">
-          <div class="case-visual" aria-hidden="true"><span class="c1"></span><span class="c2"></span></div>
+          <div class="ph">
+            <span class="tag">Fashion</span>
+            <img src="https://unsplash.com/photos/mwa_nzFpnJw/download?w=900" alt="Kledingrekken met kleding in neutrale tinten" loading="lazy" decoding="async" width="900" height="675" onerror="this.parentNode.classList.add('noimg')">
+          </div>
           <div class="case-body">
-            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
-              <h3 class="brand">Merknaam C</h3><span class="tag">Fashion</span>
-            </div>
+            <h3 class="brand">Merknaam C</h3>
             <p class="figure">3,2×</p>
             <p class="figure-label">meer omzet uit TikTok</p>
             <p class="summary">UGC-concepten met een scherpere hook maakten van TikTok het best presterende kanaal.</p>
@@ -1125,6 +1048,7 @@
     toggle.querySelector('.i-open').style.display = open ? 'none' : '';
     toggle.querySelector('.i-close').style.display = open ? '' : 'none';
     menu.hidden = !open;
+    document.body.style.overflow = open ? 'hidden' : '';
   }
   toggle.addEventListener('click', function () { setMenu(menu.hidden); });
   menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
